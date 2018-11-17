@@ -11,34 +11,22 @@ if(!getSession('logid'))
 
   <!-- Navbar -->
   <nav>
-
-<ul id='menu'>
-  <li><a class='home' href='sevricecenterhome.php'>Home</a></li>
-  <li><a class='prett' href='#' title='Services'>Services</a>
-    <ul class='menus'>
-    <li><a href='Addservicescheme.php' title='schemes'  data-type="schemes" >Add Schemes</a></li>
-      <li><a href='' title='view schemes' class="cntr-nav" data-type="viewschemes">View Schemes</a></li>
-
-
-     <!-- <li class='has-submenu'><a class='prett' href='' title='Dropdown 1'>123</a>
-        <ul class='submenu'>
-          <li><a href="#" title="Sub Menu">Sub Menu</a></li>
-          <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
-          <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
-        </ul>
-      </li>
-    -->
-    </ul>
-  </li>
-  <li><a class='prett' href='#' title='Appointment'>Appointment</a>
-    <ul class='menus'>
-    <li><a href='adminbrand.php' title='New Brand' class="adm-nav" data-type="viewappointment">View Appointment</a></li>
-    <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
-    </ul>
-  </li>
-  <li><a class='menus' href="components/logout.php">Logout</a></li>
-
-</ul>
+  <ul id='menu'>
+    <li><a class='home' href='/'>Home</a></li>
+    <li><a class='prett' href='#' title='Menu'>Service center</a>
+      <ul class='menus'>
+        <li class='has-submenu'><a class='prett' href='Dropdown 1' title='Dropdown 1'>123</a>
+          <ul class='submenu'>
+            <li><a href="#" title="Sub Menu">Sub Menu</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
+          </ul>
+        </li>
+        <li><a href='#' title='Dropdown 2'>approval</a></li>
+        <li><a href='#' title='Dropdown 3'>view</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   <!-- Navbar -->
 
@@ -55,7 +43,7 @@ if(!getSession('logid'))
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div id="pageData" class="col-md-6 mb-4 white-text text-center text-md-left">
+          <div class="col-md-6 mb-4 white-text text-center text-md-left">
 
             <h1 class="display-4 font-weight-bold">Learn Bootstrap 4 with MDB</h1>
 
@@ -97,7 +85,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/app_end');
+    require('layouts/specialapp_end');
  ?>
 </body>
 

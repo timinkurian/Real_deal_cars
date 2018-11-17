@@ -114,7 +114,7 @@ function userLogin($conn){
             $utype = $result['usertype'];
             $status=$result['status'];
             setSession('logid', $id);
-            setSession('utype', $id);
+            setSession('utype', $utype);
             if($status=="2"){
                 header('Location:../registration.php');
             }
@@ -130,14 +130,18 @@ function userLogin($conn){
             $id = $result['logid'];
             $utype = $result['usertype'];
             $status=$result['status'];
+            $sql = "SELECT `brand` FROM `servicecenter` WHERE `logid`='$id'";
+            $res1 = mysqli_query($conn, $sql);
             setSession('logid', $id);
-            setSession('utype', $id);
+           // setSession('logid', $id);
+            setSession('utype', $utype);
+            setSession('brand',$res1);
             if($status=="2"){
                 header('Location:../servicecenteradd.php');
             }
             else{
 
-            echo "<script>alert('Login Successfull');window.location='../servicecenter.php';</script>";
+            echo "<script>alert('Login Successfull');window.location='../sevricecenterhome.php';</script>";
 
             }
         }
@@ -163,8 +167,11 @@ function userProfile($conn){
     $mob=$_POST['mobno'];
     $dist=$_POST['district'];
     $place=$_POST['place'];
+
+
+
     $path=$_FILES['photo']['name'];
-    $path = '../upload/'.$path;
+    $path = '/upload/'.$path;
     $img=$_FILES['photo']['name'];
     //print_r($img);
     $val=getSession('logid');
@@ -180,7 +187,7 @@ function userProfile($conn){
     move_uploaded_file($_FILES['photo']['tmp_name'],'upload/' . $_FILES['photo']['name']);
     $sql2="UPDATE `login` SET `status`=1 where `logid`=$val";
     mysqli_query($conn,$sql2);
-    echo "<script>alert('Profile updated successfully');window.location=../user.php;</script>";
+    echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
     /* if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
     } else {
@@ -212,7 +219,7 @@ function centerRegistration($conn){
 */
 
     $cert=$_FILES['certificate']['name'];
-    $cert = '../upload/'.$cert;
+    $cert = '/upload/'.$cert;
     $img=$_FILES['certificate']['name'];
 
 

@@ -1,5 +1,7 @@
 <?php
 require "connect.php";
+//require "session.php";
+//$brand=getSession('brand');
 
 $sql = "SELECT DISTINCT brandname FROM `brand`";
 $result = $conn->query($sql);

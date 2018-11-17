@@ -10,32 +10,72 @@ if(!getSession('logid'))
 <body>
 
   <!-- Navbar -->
+
+ <nav>
+
+  <ul id='menu'>
+    <li><a class='home' href='adminhome.php'>Home</a></li>
+    <li><a class='prett' href='#' title='Service center'>Service center</a>
+      <ul class='menus'>
+      <li><a href='adminservicecenter.php' title='Approval' class="adm-nav" data-type="approval" >approval</a></li>
+        <li><a href='adminviewcenter.php' title='View all' class="adm-nav" data-type="view">View All</a></li>
+
+  
+       <!-- <li class='has-submenu'><a class='prett' href='' title='Dropdown 1'>123</a>
+          <ul class='submenu'>
+            <li><a href="#" title="Sub Menu">Sub Menu</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
+          </ul>
+        </li>
+      -->
+      </ul>
+    </li>
+    <li><a class='prett' href='#' title='Brand'>Brand</a>
+      <ul class='menus'>
+      <li><a href='adminbrand.php' title='New Brand' class="adm-nav" data-type="addbrand">New brand</a></li>
+      <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
+      </ul>
+    </li>
+
+    <li><a class='prett' href='#' title='Users'>Users</a>
+      <ul class='menus'>
+      <li><a href='' title='New Brand' class="adm-nav" data-type="viewuser">View Users</a></li>
+      <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
+      </ul>
+    </li>
+
+    <li><a class='menus' href="components/logout.php">Logout</a></li>
+ 
+  </ul>
+</nav>
+<!--
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
+    <div class="container">-->
 
       <!-- Brand -->
-      <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
-        <strong>MDB</strong>
-      </a>
+    <!--  <a class="navbar-brand" href="adminhome.php" >
+        <strong>Home</strong>
+      </a>-->
 
       <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+   <!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+-->
       <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <!--   <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
 
         <!-- Left -->
-        <ul class="navbar-nav mr-auto">
+      <!--  <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="adminbrand.php">Add car
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+            <a class="nav-link" href="adminservicecenter.php" >Service Centers</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
@@ -43,10 +83,10 @@ if(!getSession('logid'))
           <li class="nav-item">
             <a class="nav-link" href="components/logout.php" target="">Logout</a>
           </li>
-        </ul>
+        </ul>-->
 
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
+      <!--  <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
             <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
               <i class="fa fa-facebook"></i>
@@ -68,14 +108,14 @@ if(!getSession('logid'))
       </div>
 
     </div>
-  </nav>
+  </nav>-->
   <!-- Navbar -->
 
   <!-- Full Page Intro -->
-  <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div class="view full-page-intro">
 
     <!-- Mask & flexbox options-->
-    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
       <div class="container">
@@ -84,32 +124,10 @@ if(!getSession('logid'))
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4 white-text text-center text-md-left">
-
-            <h1 class="display-4 font-weight-bold">Learn Bootstrap 4 with MDB</h1>
-
-            <hr class="hr-light">
-
-            <p>
-              <strong>Best & free guide of responsive web design</strong>
-            </p>
-
-            <p class="mb-4 d-none d-md-block">
-              <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
-                available. Create your own, stunning website.</strong>
-            </p>
-
-            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-indigo btn-lg">Start free tutorial
-              <i class="fa fa-graduation-cap ml-2"></i>
-            </a>
-
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mb-4">
-
-
+          <div id="pageData" class="col-md-12">
+              <h4>
+                  Welcome! Admin
+              </h4>
           </div>
           <!--Grid column-->
 
@@ -126,7 +144,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/app_end');
+    require('layouts/specialapp_end');
  ?>
 </body>
 

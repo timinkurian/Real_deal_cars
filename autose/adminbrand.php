@@ -5,7 +5,7 @@ require('data/session.php');
 if(isset($_SESSION['logid'])){
     switch($_SESSION['utype']){
         case '1':
-            header('location:user.php');
+            header('location:adminhome.php');
             break;
         default:
             break;
@@ -27,7 +27,7 @@ if(!getSession('logid'))
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="user.php">
+      <a class="navbar-brand" href="adminhome.php">
         <strong>Home</strong>
       </a>
 
@@ -118,133 +118,76 @@ if(!getSession('logid'))
           <!--Grid column-->
           <div class="offset-4 col-md-4 mb-4" ">
 
-<!--Card-->
-<div class="card">
+            <!--Card-->
+            <div class="card">
 
-  <!--Card content-->
-  <div class="card-body">
+              <!--Card content-->
+              <div class="card-body">
 
-    <!-- Form -->
-    <form name="" id="login" method="post" action="data/centerdata.php" enctype="multipart/form-data" class="mt-5">
-      <!-- Heading -->
-      
-      <input type="text" hidden value="schemeadd" name="type">
-      <h3 class="dark-grey-text text-center">
-        <strong>ADD NEW SERVICE SCHEME</strong>
-      </h3>
-      <hr>
-      <table>
-      <tr>
-      <td>Vehicle number</label></td>
-      <td>
-      <div class="md-form">                  
-        <input type="text" id="state" class=" validate" name="state" maxlength=10></td>
-      <!--  <label for="form3">Service Name</label>-->
-     </div>
-     </td>
-     </tr>
-    <tr>
+                <!-- Form -->
+                <form name="" id="login" method="post" action="data/admindata.php" enctype="multipart/form-data" class="mt-5">
+                  <!-- Heading -->
+                  
+                  <input type="text" hidden value="brand" name="type">
+                  <h3 class="dark-grey-text text-center">
+                    <strong>ADD NEW BRAND</strong>
+                  </h3>
+                  <hr>
 
-    <td><label>Choose brand</label></td>
-    <td>
-     <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="brand" id="brand">
-           <?php
-            include('data/brand.php');
-           ?>
-        </select >
+                  <div class="md-form">                  
+                    <input type="text" id="brand" class="form-control validate" name="brand" >
+                    <label for="form3">Brand Name</label>
+                  </div>
+                <!--  <div class="md-form">
+                    <input type="text" id="mname" class="form-control validate" name="mname">
+                    <label for="form2">Middle Name</label>
+                  </div>-->
+
+                 
+                  <div class="md-form">                  
+                    <input type="text" id="model" class="form-control validate" name="model" >
+                    <label for="form3"> Model</label>
+                  </div>
+                 
+                  <div class="md-form">                  
+                    <input type="text" id="Variant" class="form-control validate" name="variant" >
+                    <label for="form3">Variant</label>
+                  </div> 
+                  <div class="md-form">                  
+                    <input type="text" id="fuel" class="form-control validate" name="fuel" >
+                    <label for="form3">Fuel</label>
+                  </div>
+                  <div class="text-center">
+                    <input type="submit" class="btn btn-indigo" value="Add"> 
+                    <hr>
+                <!-- <fieldset class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkbox1">
+                      <label for="checkbox1" class="form-check-label dark-grey-text">Rememer Me</label>-->
+                    </fieldset>
+                  </div>
+
+                </form>
+                <!-- Form -->
+
+              </div>
+
+            </div>
+            <!--/.Card-->
+
+          </div>
+          <!--Grid column-->
+
         </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Model</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="model" id="model">
-          
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Variant</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class=" form-control" name="variant" id="variant">        
-       <!--echo '<option value=Select>Choose the brand</option>';-->
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Fuel Type</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="fuel" id="fuel">                  
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Manufacturing Year</label></td>
-        <td>
-        <div class="md-form">
-        <input type="month " class="form-control" name="year" id="year" >                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Engine Number</label></td>
-        <td>
-        <div class="md-form">
-        <input type="text" class="form-control" name="engineno" id="engineno">                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Chasis Number</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="text" id="chasisno" class="form-control validate" name="chasisno" >
-        </div>  
-        </td>
-        </tr>
-        </table>
-      <div class="text-center">
-        <input type="submit" class="btn btn-indigo" value="Add"> 
-        <hr>
-    <!-- <fieldset class="form-check">
-          <input type="checkbox" class="form-check-input" id="checkbox1">
-          <label for="checkbox1" class="form-check-label dark-grey-text">Rememer Me</label>-->
-        </fieldset>
+        <!--Grid row-->
+
       </div>
-
-    </form>
-    <!-- Form -->
-
+      <!-- Content -->
   </div>
 
-</div>
-<!--/.Card-->
-
-</div>
-<!--Grid column-->
-
-</div>
-<!--Grid row-->
-
-</div>
-<!-- Content -->
-</div>
-
-<?php
-require('layouts/app_end');
-?>
-</div>
+ <?php
+    require('layouts/app_end');
+ ?>
+ </div>
 </body>
 
 </html>

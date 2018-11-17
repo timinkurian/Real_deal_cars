@@ -1,5 +1,6 @@
 <?php 
 require('layouts/app_top');
+
 require('data/session.php');
 if(!getSession('logid'))
 {
@@ -9,75 +10,43 @@ if(!getSession('logid'))
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="user.php" target="">
-        <strong>Home</strong>
-      </a>
+ <nav>
 
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <ul id='menu'>
+    <li><a class='home' href='user.php'>Home</a></li>
+    <li><a class='prett' href='#' title='add car'>CAR</a>
+      <ul class='menus'>
+      <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>
+        <li><a href='viewcar.php' title='View car' data-type="view">View Car</a></li>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="addcar.php">Add your car
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="userprofile.php" target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="components/logout.php" target="">Logout</a>
-          </li>
-        </ul>
-
-
-
-        <!-- Right -->
-       <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
-  <!-- Navbar -->
+  
+       <!-- <li class='has-submenu'><a class='prett' href='' title='Dropdown 1'>123</a>
+          <ul class='submenu'>
+            <li><a href="#" title="Sub Menu">Sub Menu</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
+            <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
+          </ul>
+        </li>
+      -->
+      </ul>
+    </li>
+    <li><a class='prett' href='#' title='Appointment'>Appointment</a>
+      <ul class='menus'>
+      <li><a href='' title='New Brand' class="user-nav" data-type="appointment">Make an Appointment</a></li>
+      <li><a href='#' title='List all' data-type="viewappointmentstatus">Appointment Status</a></li>
+      </ul>
+    </li>
+    <li><a class='menus' href="components/logout.php">Logout</a></li>
+ 
+  </ul>
+</nav>
 
   <!-- Full Page Intro -->
- 
-  <div class="view full-page-intro"style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div  id="pageData"  class="view full-page-intro">
 
     <!-- Mask & flexbox options-->
-    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
       <div class="container">
@@ -86,32 +55,10 @@ if(!getSession('logid'))
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4 white-text text-center text-md-left">
-
-            <h1 class="display-4 font-weight-bold">Learn Bootstrap 4 with MDB</h1>
-
-            <hr class="hr-light">
-
-            <p>
-              <strong>Best & free guide of responsive web design</strong>
-            </p>
-
-            <p class="mb-4 d-none d-md-block">
-              <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
-                available. Create your own, stunning website.</strong>
-            </p>
-
-            <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-indigo btn-lg">Start free tutorial
-              <i class="fa fa-graduation-cap ml-2"></i>
-            </a>
-
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mb-4">
-
-
+          <div  class="col-md-12">
+              <h4>
+                  Welcome! Admin
+              </h4>
           </div>
           <!--Grid column-->
 
@@ -128,7 +75,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/app_end');
+    require('layouts/specialapp_end');
  ?>
 </body>
 

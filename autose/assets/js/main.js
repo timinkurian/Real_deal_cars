@@ -50,4 +50,115 @@ $("#variant").on("change", function(){
     });
 })
 
+
+$(".adm-nav").on("click", function(e){
+    //alert();
+    e.preventDefault();
+    $type = $(this).data('type');
+    
+    switch($type){
+        case 'approval':
+            $url = 'data/servicecenter.php';
+            break;
+        case 'view':
+            //alert();
+            $url = 'data/viewservicecenter.php';
+            break;
+        case 'addbrand':
+            //alert();
+            $url = '../adminbrand.php';
+            break; 
+            case 'viewbrand':
+            //alert();
+            $url = 'data/viewbrand.php';
+           // alert();
+            break;  
+            case 'viewuser':
+            $url='data/admindata.php';
+            break;           
+
+    }
+   
+    $.ajax({
+        url: $url,
+        method:'post',
+        data:{'type':$type},
+        success:function(data){
+            $("#pageData").html(data);
+        }
+    });
+}); 
+
+
+$("body").on("click", ".adm-click", function(e){
+   // e.preventDefault();
+    $type = $(this).data('type');
+    $id=$(this).data('id');
+    //alert(this.$type);
+    $.ajax({
+
+        url: 'data/admindata.php',
+        method:'post',
+        data:{'type':$type,'id':$id},
+        success:function(data){
+            console.log(data);
+            
+          //  $("#pageData").html(data);
+          if(data==1){
+              $("#servControl"+$id).html('approved!');
+          }
+          if(data==2){
+            $("#servControl"+$id).html('rejected!');
+        }
+        }
+    });
 });
+
+});
+
+
+$(".cntr-nav").on("click", function(e){
+    //alert();
+    e.preventDefault();
+    $type = $(this).data('type');
+    
+    switch($type){
+        case 'viewschemes':
+            $url = 'data/centerdata.php';
+            break;
+                  
+
+    }
+   
+    $.ajax({
+        url: $url,
+        method:'post',
+        data:{'type':$type},
+        success:function(data){
+            $("#pageData").html(data);
+        }
+    });
+}); 
+
+$(".user-nav").on("click", function(e){
+    //alert();
+    e.preventDefault();
+    $type = $(this).data('type');
+    
+    switch($type){
+        case 'appointment':
+            $url = 'data/usercenterview.php';
+            break;
+                  
+
+    }
+   
+    $.ajax({
+        url: $url,
+        method:'post',
+        data:{'type':$type},
+        success:function(data){
+            $("#pageData").html(data);
+        }
+    });
+}); 
