@@ -61,10 +61,10 @@ require('data/session.php');
                   <hr>
                   <table>
                   <tr>
-                  <td><label>Service Type</label></td>
+                  <td><label>Service Name</label></td>
                   <td>
                   <div class="md-form">                  
-                  <select class="form-control" name="stype" id="stype">
+                  <select class="form-control" name="sname" id="sname">
                   <?php 
                     include('data/servicetype.php');
                   ?>
@@ -73,10 +73,10 @@ require('data/session.php');
                   </td>
                   </tr> 
                   <tr>
-                  <td>Service name</label></td>
+                  <td>Service Type</label></td>
                   <td>
                   <div class="md-form">                  
-                    <input type="text" id="sname" class="form-control validate" name="sname" >
+                    <input type="text" id="stype" class="form-control validate" name="stype" >
                   <!--  <label for="form3">Service Name</label>-->
                  </div>
                  </td>

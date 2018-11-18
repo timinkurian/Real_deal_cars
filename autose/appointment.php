@@ -16,6 +16,8 @@ if(!getSession('logid'))
 {
   header('Location:index.php');
 }
+$scid=$_POST['type'];
+setSession('scid',$scid);
 ?>
 
 <body>
@@ -60,92 +62,77 @@ if(!getSession('logid'))
   <div class="card-body">
 
     <!-- Form -->
-    <form name="" id="login" method="post" action="data/centerdata.php" enctype="multipart/form-data" class="mt-5">
+    <form name="" id="login" method="post" action="data/userdata.php" enctype="multipart/form-data" class="mt-5">
       <!-- Heading -->
       
-      <input type="text" hidden value="schemeadd" name="type">
+      <input type="text" hidden value="appointment" name="type">
+      <input type="text" hidden value="<?php echo $_POST['type']?>" name="scid1">    
       <h3 class="dark-grey-text text-center">
-        <strong>ADD NEW SERVICE SCHEME</strong>
+        <strong>Make An Appointment</strong>
       </h3>
       <hr>
       <table>
       <tr>
-      <td>Vehicle number</label></td>
+      <td>Pick a Date</label></td>
       <td>
-      <div class="md-form">                  
-        <input type="text" id="state" class=" validate" name="state" maxlength=10></td>
-      <!--  <label for="form3">Service Name</label>-->
-     </div>
+      <div class="md-form">                
+       <input type="date" id="form3" class="form-control " name="date">
+
+        </div>
      </td>
      </tr>
-    <tr>
-
-    <td><label>Choose brand</label></td>
-    <td>
-     <div class="md-form">                  
+      <tr>
+      <td>Vehicle number</label></td>
+      <td>
+      <div class="md-form">                
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="brand" id="brand">
-           <?php
-            include('data/brand.php');
+       <select class="form-control" name="vehno" id="vehno">
+          <?php
+           include('data/car.php');
            ?>
         </select >
         </div>
-        </td>
-        </tr>
+     </td>
+     </tr>
         <tr>
-        <td><label>Choose Model</label></td>
+        <td><label>Choose Service Type</label></td>
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="model" id="model">
-          
+       <select class="form-control" name="stype" id="stype">
+          <?php
+          include('data/service.php');
+          ?>
         </select >
         </div>
         </td>
         </tr>
         <tr>
-        <td><label>Choose Variant</label></td>
+        <td><label>When you reach</label></td>
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class=" form-control" name="variant" id="variant">        
-       <!--echo '<option value=Select>Choose the brand</option>';-->
+       <select class=" form-control" name="time" id="time">        
+       <option value=Select>Choose time period</option>
+       <option value=8AM-9AM>8AM-9AM</option>
+       <option value=9AM-10AM>9AM-10AM</option>
+       <option value=10AM-11AM>10AM-11AM</option>
+       <option value=11AM-12PM>11AM-12PM</option>
+       <option value=12PM-1PM>12PM-1PM</option>
+       <option value=1PM-2PM>1PM-2PM</option>
+       <option value=2PM-3PM>2PM-3PM</option>
+       <option value=3PM-4PM>3PM-4PM</option>
+       <option value=4PM-5PM>4PM-5PM</option>
         </select >
         </div>
         </td>
         </tr>
-        <tr>
-        <td><label>Fuel Type</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="fuel" id="fuel">                  
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Manufacturing Year</label></td>
+       
+        <td><label>Remarks</label></td>
         <td>
         <div class="md-form">
-        <input type="month " class="form-control" name="year" id="year" >                   
+        <input type="textarea" class="form-control" name="remarks" id="remarks">                   
         </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Engine Number</label></td>
-        <td>
-        <div class="md-form">
-        <input type="text" class="form-control" name="engineno" id="engineno">                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Chasis Number</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="text" id="chasisno" class="form-control validate" name="chasisno" >
-        </div>  
         </td>
         </tr>
         </table>

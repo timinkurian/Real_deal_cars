@@ -25,6 +25,7 @@ switch($type){
     }   
     function schemeAdd($conn){
     $sname=$_POST['sname'];
+    $stype=$_POST['stype'];
     $brand=$_POST['brand'];
     $model=$_POST['model'];
     $variant=$_POST['variant'];
@@ -38,15 +39,18 @@ switch($type){
     //$res = mysqli_query($conn,$sql);
     //$data = mysqli_fetch_assoc($res);
     //$br = $data['brandid']; 
-
+   $sql2="SELECT `typeid` FROM `stypes` WHERE `sname`='$sname'"; 
+   $si=mysqli_query($conn,$sql2);
+    $data=mysqli_fetch_assoc($si);
+    $typeid=$data['typeid'];
     $sq="SELECT `scid` FROM `servicecenter` WHERE `logid`='$val'";
     $sci=mysqli_query($conn,$sq);
     $data1 = mysqli_fetch_assoc($sci);
     $sc = $data1['scid'];
    // echo $sq;
    // die();
-    $sql1="INSERT INTO `servicescheme`(`sname`,`scid`,`brand`,`model`,`variant`,`fuel`,`replaced`,`checked`,`amount`) VALUES ('$sname','$sc','$brand','$model','$variant','$fuel','$replacing','$checking','$amount')";
-    //   die();
+   $sql1="INSERT INTO `servicescheme`(`stype`,`scid`,`typeid`,`brand`,`model`,`variant`,`fuel`,`replaced`,`checked`,`amount`) VALUES ('$stype','$sc','$typeid','$brand','$model','$variant','$fuel','$replacing','$checking','$amount')";
+       //die();
     mysqli_query($conn,$sql1);
     echo "<script>alert('Added Successfully');window.location='../Addservicescheme.php';</script>";
     }
@@ -64,12 +68,17 @@ switch($type){
                     background-color: gray;
                     color: white;
                 }
+                td{
+                    background-color:white;
+                    color:black;
+                }
                 td img{
                     width:100px;
                     height:auto;
                 }
             </style>    
         <body>
+        <div class="py-3">
         <table>
             <thead>
                 <tr>
@@ -140,19 +149,21 @@ switch($type){
     echo "0 results";
 }?>
 </table>
+</div>
 </body>
 
 </html>
 <?php
     }
 function addServiceType($conn){
-    $stype=$_POST['stype'];
+    $sname=$_POST['sname'];
+    $maximum=$_POST['maximum'];
     $val=getSession('logid');
     $sq="SELECT `scid` FROM `servicecenter` WHERE `logid`='$val'";
     $sci=mysqli_query($conn,$sq); 
     $data1 = mysqli_fetch_assoc($sci);
     $scid = $data1['scid'];
-    $sql="INSERT INTO `stypes` (`scid`, `stype`) VALUES ('$scid','$stype')";
+    $sql="INSERT INTO `stypes` (`scid`, `sname`,`maximum`) VALUES ('$scid','$sname','$maximum')";
     mysqli_query($conn,$sql);
     echo "<script>alert('Added Successfully');window.location='../addservicetypes.php';</script>";
 

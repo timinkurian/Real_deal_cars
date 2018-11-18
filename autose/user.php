@@ -23,8 +23,8 @@ if(!getSession('logid'))
     </li>
     <li><a class='prett' href='#' title='Appointment'>Appointment</a>
       <ul class='menus'>
-      <li><a href='' title='New Brand' class="user-nav" data-type="appointment">Make an Appointment</a></li>
-      <li><a href='#' title='List all' data-type="viewappointmentstatus">Appointment Status</a></li>
+      <li><a href='' title='Appointment' class="user-nav" data-type="appointment">Make an Appointment</a></li>
+      <li><a href='' title='Status' class="user-nav" data-type="status">Appointment Status</a></li>
       </ul>
     </li>
     <li><a class='menus' href="components/logout.php">Logout</a></li>

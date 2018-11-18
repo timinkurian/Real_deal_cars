@@ -2,9 +2,7 @@
 session_start();
 //session manager
 
-function setSession($key, $value){
-
-    
+function setSession($key, $value){ 
     $_SESSION[$key] =$value;
 }
 

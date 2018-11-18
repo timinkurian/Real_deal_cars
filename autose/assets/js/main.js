@@ -152,6 +152,10 @@ $(".user-nav").on("click", function (e) {
         case 'viewcar':
             $url='data/viewcar.php';
         break;
+        case 'status':
+            $url = 'data/appointmentstatus.php';
+            alert();
+            break;       
 
 
     }

@@ -41,13 +41,17 @@ if(!getSession('logid'))
       
       <input type="text" hidden value="addtype" name="type">
       <h3 class="dark-grey-text text-center">
-        <strong>Add Service Types</strong>
+        <strong>Add Service Name</strong>
       </h3>
       <hr>
       <div class="md-form">                  
-                    <input type="text" id="stype" class="form-control validate" name="stype">
-                    <label for="form3">Type of service</label>
-                  </div>
+        <input type="text" id="sname" class="form-control validate" name="sname">
+        <label for="form3">Type of service</label>
+       </div>
+       <div class="md-form">                  
+        <input type="text" id="maximum" class="form-control validate" name="maximum">
+        <label for="form3">No of Cars Servicing per Day</label>
+       </div>
       <div class="text-center">
         <input type="submit" class="btn btn-indigo" value="Add"> 
         <hr>
