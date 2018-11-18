@@ -233,7 +233,7 @@ function centerRegistration($conn){
     //print_r($email);
 
     $sql= "INSERT INTO `servicecenter`(`logid`, `centername`, `licenceno`, `type`, `brand`, `district`, `place`, `certificate`, `mobile`) VALUES ('$val','$cname','$licno','$type','$brand','$dist','$place','$cert','$mob')";
-    print_r($sql);
+   // print_r($sql);
     $r2=mysqli_query($conn,$sql);
     //move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/' . $_FILES['certifiacte']['name']);
 

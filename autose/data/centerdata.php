@@ -17,7 +17,9 @@ switch($type){
             case 'viewschemes':
             viewSchemes($conn);
             break;
-
+            case 'addtype':
+            addServiceType($conn);
+            break;
         default:
             break;
     }   
@@ -143,4 +145,15 @@ switch($type){
 </html>
 <?php
     }
-    ?>
+function addServiceType($conn){
+    $stype=$_POST['stype'];
+    $val=getSession('logid');
+    $sq="SELECT `scid` FROM `servicecenter` WHERE `logid`='$val'";
+    $sci=mysqli_query($conn,$sq); 
+    $data1 = mysqli_fetch_assoc($sci);
+    $scid = $data1['scid'];
+    $sql="INSERT INTO `stypes` (`scid`, `stype`) VALUES ('$scid','$stype')";
+    mysqli_query($conn,$sql);
+    echo "<script>alert('Added Successfully');window.location='../addservicetypes.php';</script>";
+
+}

@@ -27,8 +27,9 @@ if ($val) {
 </head>
 
 <body>
+<div class="mt-4 py-3">
 <div>
-<form>
+<form class="float-right py-3 px-5 mx-3">
 Find service center near you
 <select name="district" id="district">
     <?php
@@ -43,7 +44,7 @@ Find service center near you
 <input type="button" class="user-click" data-type="search" data-id="district brand" value="Search">
 </form>
 </div>
-    <table>
+    <table width="100%">
         <thead>
             <tr>
                 <th>Center Name</th>
@@ -52,10 +53,11 @@ Find service center near you
                 <th>District</th>
                 <th>Place</th>
                 <th>Contact Number</th>
-                <th>Licence Number</th> 
+                <th>Licence Number</th>
+                <th></th> 
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbbody">
             <?php
             while($result=mysqli_fetch_array($val)){
 
@@ -82,9 +84,11 @@ Find service center near you
                 <td>
                     <?php echo $result['licenceno']; ?>
                 </td>
-                <td id="servControl<?php echo $result['scid']; ?>"> 
-                    <input type="button" class="user-click" data-type="appointment" data-id= <?php echo $result['scid']; ?> value="Make an appointment">
-                    
+                <td id="userControl<?php echo $result['scid']; ?>"> 
+                <form name="" id="login" method="post" action="appointment.php" class="mt-5">
+                    <input type="text" hidden value="<?php echo $result['scid']; ?>" name="type">
+                    <input type="submit" class=" btn btn-primary btn-sm"  value="Make an appointment">
+                </form>
                 </td>
 
             </tr>
@@ -93,6 +97,7 @@ Find service center near you
             ?>
         </tbody>
     </table>
+    </div>
 </body>
 
 </html>

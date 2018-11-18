@@ -55,6 +55,7 @@ function inputValidate($value, $type, $optional, $class) {
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
     $namePattern = /[A-Za-z]/;
+    $vehnoPattern=/[A-Z]{2}\s[0-9]{2}\s[A-Z]{1,2}\s[0-9]{4}/;
     // dd/mm/yyyy
     $datePattern = /^([0-2]{1}[0-9]{1}|[0-3]{1}[0-1]{1}|[0-9]{1})\/([0]{1}[0-9]{1}|[0-1]{1}[0-2]{1}|[0-9]{1})\/([1]{1}[9]{1}[4-9]{1}[0-9]{1}|[2]{1}[0]{1}[0-1]{1}[0-9]{1})/;
     switch ($type) {
@@ -67,20 +68,26 @@ function inputValidate($value, $type, $optional, $class) {
             $message = "10 digits needed";
             break;
         case "text":
-            pattern = $textPattern;
+            
             if ($class == "name") {
                 pattern = $namePattern;
                 $message = "Name should contain letters only."
+            }
+            if ($class == "regno") {
+                pattern = $vehnoPattern;
+                $message = "Should enter in correct format. Eg: KL 07 XX 0001"
+            }
+            else{
+                pattern = $textPattern;
             }
             break;
         case "password":
             pattern = $pswdPattern;
             $message = "min. 6 characters, atleast 1 special character /"
             break;
-        case "file":
-            
-            extension:"png|jpeg|jpg",
-            $message= "File must be JPEG or PNG, less than 1MB";
+            case "vehicle":
+            pattern = $vehnoPattern;
+            $message = "Invalid format(Eg:kl06ax9999) /"
             break;
         case "date":
             $value = formatDate($value);

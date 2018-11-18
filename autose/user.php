@@ -18,17 +18,7 @@ if(!getSession('logid'))
     <li><a class='prett' href='#' title='add car'>CAR</a>
       <ul class='menus'>
       <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>
-        <li><a href='viewcar.php' title='View car' data-type="view">View Car</a></li>
-
-  
-       <!-- <li class='has-submenu'><a class='prett' href='' title='Dropdown 1'>123</a>
-          <ul class='submenu'>
-            <li><a href="#" title="Sub Menu">Sub Menu</a></li>
-            <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
-            <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
-          </ul>
-        </li>
-      -->
+        <li><a href='' title='View car' class="user-nav" data-type="viewcar">View Car</a></li>
       </ul>
     </li>
     <li><a class='prett' href='#' title='Appointment'>Appointment</a>
@@ -57,7 +47,7 @@ if(!getSession('logid'))
           <!--Grid column-->
           <div  class="col-md-12">
               <h4>
-                  Welcome! Admin
+                  Welcome! User
               </h4>
           </div>
           <!--Grid column-->

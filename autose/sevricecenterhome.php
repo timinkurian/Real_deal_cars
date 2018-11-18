@@ -14,22 +14,22 @@ if(!getSession('logid'))
 
 <ul id='menu'>
   <li><a class='home' href='sevricecenterhome.php'>Home</a></li>
+  
   <li><a class='prett' href='#' title='Services'>Services</a>
     <ul class='menus'>
+    <li><a href='addservicetypes.php' title='stypes'  data-type="stypes" >Add Service Types</a></li>
     <li><a href='Addservicescheme.php' title='schemes'  data-type="schemes" >Add Schemes</a></li>
       <li><a href='' title='view schemes' class="cntr-nav" data-type="viewschemes">View Schemes</a></li>
-
-
-     <!-- <li class='has-submenu'><a class='prett' href='' title='Dropdown 1'>123</a>
-        <ul class='submenu'>
-          <li><a href="#" title="Sub Menu">Sub Menu</a></li>
-          <li><a href="#" title="Sub Menu">Sub Menu 2</a></li>
-          <li><a href="#" title="Sub Menu">Sub Menu 3</a></li>
-        </ul>
-      </li>
-    -->
     </ul>
   </li>
+
+    <li><a class='prett' href='#' title='strength'>Strength</a>
+    <ul class='menus'>
+    <li><a href='addstrength.php' title='Add Strength' data-type="addstrength">Add Strength</a></li>
+    <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View Strength</a></li>
+    </ul>
+  </li>
+ 
   <li><a class='prett' href='#' title='Appointment'>Appointment</a>
     <ul class='menus'>
     <li><a href='adminbrand.php' title='New Brand' class="adm-nav" data-type="viewappointment">View Appointment</a></li>

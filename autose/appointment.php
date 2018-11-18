@@ -22,78 +22,34 @@ if(!getSession('logid'))
 <!--style="background-image: url('userimg.png'); background-repeat: no-repeat; background-size: cover;"-->
 <div class="view full-page-intro" >
 
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
+<nav>
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="user.php">
-        <strong>Home</strong>
-      </a>
+<ul id='menu'>
+  <li><a class='home' href='user.php'>Home</a></li>
+  <li><a class='prett' href='#' title='add car'>CAR</a>
+    <ul class='menus'>
+    <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>
+      <li><a href='' title='View car' class="user-nav" data-type="viewcar">View Car</a></li>
+    </ul>
+  </li>
+  <li><a class='prett' href='#' title='Appointment'>Appointment</a>
+    <ul class='menus'>
+    <li><a href='' title='New Brand' class="user-nav" data-type="appointment">Make an Appointment</a></li>
+    <li><a href='#' title='List all' data-type="viewappointmentstatus">Appointment Status</a></li>
+    </ul>
+  </li>
+  <li><a class='menus' href="components/logout.php">Logout</a></li>
 
-   
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-     <!--
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-          </li>
-        </ul>
-
-      
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-     -->
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
+</ul>
+</nav>
   <!-- Navbar -->
 
-  <div class="main">
+  <div class="main py-3" >
       <!-- Content -->
-      <div class="container">
+      <div class="container ">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
-
-          <!--Grid column-->
-
           <!--Grid column-->
           <div class="offset-4 col-md-4 mb-4" ">
 
@@ -104,10 +60,10 @@ if(!getSession('logid'))
   <div class="card-body">
 
     <!-- Form -->
-    <form name="" id="login" method="post" action="data/userdata.php" enctype="multipart/form-data" class="mt-5">
+    <form name="" id="login" method="post" action="data/centerdata.php" enctype="multipart/form-data" class="mt-5">
       <!-- Heading -->
       
-      <input type="text" hidden value="addcar" name="type">
+      <input type="text" hidden value="schemeadd" name="type">
       <h3 class="dark-grey-text text-center">
         <strong>ADD NEW SERVICE SCHEME</strong>
       </h3>
@@ -117,7 +73,7 @@ if(!getSession('logid'))
       <td>Vehicle number</label></td>
       <td>
       <div class="md-form">                  
-        <input type="text" id="vehno" class=" validate" name="vehno" maxlength=13 data-type="regno"></td>
+        <input type="text" id="state" class=" validate" name="state" maxlength=10></td>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>
@@ -169,18 +125,10 @@ if(!getSession('logid'))
         </td>
         </tr>
         <tr>
-        <td><label>Color</label></td>
-        <td>
-        <div class="md-form">
-        <input type="text" class="form-control validate" name="color" id="color" >                   
-        </div>
-        </td>
-        </tr>
-        <tr>
         <td><label>Manufacturing Year</label></td>
         <td>
         <div class="md-form">
-        <input type="date" class="form-control" name="year" id="year" >                   
+        <input type="month " class="form-control" name="year" id="year" >                   
         </div>
         </td>
         </tr>
@@ -198,24 +146,6 @@ if(!getSession('logid'))
         <div class="md-form">                  
         <input type="text" id="chasisno" class="form-control validate" name="chasisno" >
         </div>  
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose RC Book</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="file" id="rcbook" class="form-control " name="rcbook" accept=".jpeg,.jpg,.png">
-        <label for="form3"></label>
-        </div> 
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Car Image</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="file" id="car" class="form-control " name="car" accept=".jpeg,.jpg,.png">
-        <label for="form3"></label>
-        </div> 
         </td>
         </tr>
         </table>
