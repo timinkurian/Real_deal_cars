@@ -15,6 +15,12 @@ if(!getSession('logid'))
 
   <ul id='menu'>
     <li><a class='home' href='user.php'>Home</a></li>
+    <li><a class='prett' href='#' title='add car'>PROFILE</a>
+      <ul class='menus'>
+      <li><a href='addcar.php' class="user-nav" title='Profile View' data-type="profile" >View Profile</a></li>
+        <li><a href='usereditprofile.php' title='View car'  data-type="editprofile">Edit Profile</a></li>
+      </ul>
+    </li>
     <li><a class='prett' href='#' title='add car'>CAR</a>
       <ul class='menus'>
       <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>

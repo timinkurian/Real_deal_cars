@@ -50,7 +50,8 @@ function inputValidate($value, $type, $optional, $class) {
     //regex set for validation
     var pattern;
     $telPattern = /^([0-9]{10})?$/;
-    $textPattern = /[A-Za-z0-9]/;
+    $numberPattern = /^([0-9])?$/;
+    $textPattern = /[A-Za-z]/;
     $namePattern = /[A-Za-z]/;
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
@@ -60,7 +61,7 @@ function inputValidate($value, $type, $optional, $class) {
     $datePattern = /^([0-2]{1}[0-9]{1}|[0-3]{1}[0-1]{1}|[0-9]{1})\/([0]{1}[0-9]{1}|[0-1]{1}[0-2]{1}|[0-9]{1})\/([1]{1}[9]{1}[4-9]{1}[0-9]{1}|[2]{1}[0]{1}[0-1]{1}[0-9]{1})/;
     switch ($type) {
         case "number":
-            pattern = $number;
+            pattern = $numberPattern;
             $message = "Only digits please";
             break;
         case "tel":

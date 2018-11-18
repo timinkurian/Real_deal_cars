@@ -45,11 +45,11 @@ if(!getSession('logid'))
       </h3>
       <hr>
       <div class="md-form">                  
-        <input type="text" id="sname" class="form-control validate" name="sname">
+        <input type="text" id="sname" class="form-control validate" name="sname" data-type="name">
         <label for="form3">Type of service</label>
        </div>
        <div class="md-form">                  
-        <input type="text" id="maximum" class="form-control validate" name="maximum">
+        <input type="number" id="maximum" class="form-control validate" name="maximum">
         <label for="form3">No of Cars Servicing per Day</label>
        </div>
       <div class="text-center">

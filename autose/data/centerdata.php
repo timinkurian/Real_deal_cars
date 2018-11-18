@@ -20,6 +20,9 @@ switch($type){
             case 'addtype':
             addServiceType($conn);
             break;
+            case 'started':
+            serviceStarted($conn);
+            break;
         default:
             break;
     }   
@@ -83,7 +86,7 @@ switch($type){
             <thead>
                 <tr>
                     <th>Service Id</th>
-                    <th>Service Name</th>
+                    <th>Service Type</th>
                     <th>Brand</th>
                     <th>Model</th>
                     <th>Variant</th>
@@ -114,7 +117,7 @@ switch($type){
                     <?php echo $result['sid']; ?>
                 </td>
                 <td>
-                    <?php echo $result['sname']; ?>
+                    <?php echo $result['stype']; ?>
                 </td>
                 <td>
                     <?php echo $result['brand']; ?>
@@ -163,8 +166,22 @@ function addServiceType($conn){
     $sci=mysqli_query($conn,$sq); 
     $data1 = mysqli_fetch_assoc($sci);
     $scid = $data1['scid'];
+    $sql1 = "SELECT * FROM `stypes` WHERE `scid`='$scid' AND `sname`='$sname'";
+    $res = mysqli_query($conn, $sql1);
+    if(mysqli_num_rows($res)>0){
+        echo"<script> alert('Already exist');window.location ='../addservicetypes.php';</script>";
+    }
+    else{
     $sql="INSERT INTO `stypes` (`scid`, `sname`,`maximum`) VALUES ('$scid','$sname','$maximum')";
     mysqli_query($conn,$sql);
     echo "<script>alert('Added Successfully');window.location='../addservicetypes.php';</script>";
+    }
 
+}
+function serviceStarted($conn){
+    $apid=$_POST['id'];
+    $sql="UPDATE `appointment` SET `status`= 'Started' WHERE `apid`='$apid'";
+   mysqli_query($conn, $sql);
+   // echo "<script>alert('Approved');window.location=../adminhome.php;</script>";
+   echo '1';
 }

@@ -40,43 +40,7 @@ if(!getSession('logid'))
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-     <!--
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-          </li>
-        </ul>
 
-      
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-     -->
         </ul>
 
       </div>
@@ -117,7 +81,7 @@ if(!getSession('logid'))
       <td>Vehicle number</label></td>
       <td>
       <div class="md-form">                  
-        <input type="text" id="vehno" class=" validate" name="vehno" maxlength=13 data-type="regno"></td>
+        <input type="text" id="vehno" class="form-control validate" name="vehno" maxlength=13 data-type="regno"></td>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>

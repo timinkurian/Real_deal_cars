@@ -141,6 +141,7 @@ function makeAppointment($conn){
             mysqli_query($conn,$sql5);
             $sql6="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `time`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$time','$remarks','booked')";
             mysqli_query($conn,$sql6);
+            $_SESSION['scid'] = '';
             echo "<script>alert('Added successfully');window.location='../user.php';</script>";
 
 
@@ -160,6 +161,7 @@ function makeAppointment($conn){
                 //inserting to appointment table
                 $sql8="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `time`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$time','$remarks','booked')";
                 mysqli_query($conn,$sql8);
+                $_SESSION['scid'] = '';
                 echo "<script>alert('Added successfully');window.location='../user.php';</script>";
             }
             else{

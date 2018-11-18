@@ -24,7 +24,7 @@ if(!getSession('logid'))
   </li> 
   <li><a class='prett' href='#' title='Appointment'>Appointment</a>
     <ul class='menus'>
-    <li><a href='adminbrand.php' title='New Brand' class="adm-nav" data-type="viewappointment">View Appointment</a></li>
+    <li><a href='' title='New Brand' class="cntr-nav" data-type="viewappointment">View Appointment</a></li>
     <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
     </ul>
   </li>
@@ -32,13 +32,12 @@ if(!getSession('logid'))
 
 </ul>
 </nav>
-  <!-- Navbar -->
-
+  
   <!-- Full Page Intro -->
-  <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div  id="pageData"  class="view full-page-intro">
 
     <!-- Mask & flexbox options-->
-    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
       <div class="container">
@@ -47,11 +46,10 @@ if(!getSession('logid'))
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mb-4">
-
-
+          <div  class="col-md-12">
+              <h4>
+                  Welcome! User
+              </h4>
           </div>
           <!--Grid column-->
 
@@ -68,7 +66,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/app_end');
+    require('layouts/specialapp_end');
  ?>
 </body>
 

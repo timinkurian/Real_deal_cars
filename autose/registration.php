@@ -28,6 +28,7 @@ if(!getSession('logid'))
 
       <!-- Brand -->
       <a class="navbar-brand" href="index.php">
+
         <strong>RDC</strong>
       </a>
 
@@ -76,7 +77,7 @@ if(!getSession('logid'))
                   <hr>
 
                   <div class="md-form">                  
-                    <input type="text" id="fname" class="form-control validate" name="fname" data-type="name">
+                    <input type="text" id="fname" class="form-control validate" name="fname" data-type="gname">
                     <label for="form3">First Name</label>
                   </div>
                 <!--  <div class="md-form">

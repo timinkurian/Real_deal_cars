@@ -123,8 +123,12 @@ $(".cntr-nav").on("click", function (e) {
     $type = $(this).data('type');
 
     switch ($type) {
-        case 'viewschemes':
+            case 'viewschemes':
             $url = 'data/centerdata.php';
+            break;
+            case 'viewappointment':
+            //alert();
+            $url = 'data/centerappointment.php';
             break;
 
 
@@ -140,6 +144,32 @@ $(".cntr-nav").on("click", function (e) {
     });
 });
 
+$("body").on("click", ".cntr-click", function (e) {
+    // e.preventDefault();
+    alert();
+    $type = $(this).data('type');
+    $id = $(this).data('id');
+    //alert(this.$type);
+    $.ajax({
+
+        url: 'data/centerdata.php',
+        method: 'post',
+        data: { 'type': $type, 'id': $id },
+        success: function (data) {
+            console.log(data);
+
+            //  $("#pageData").html(data);
+            if (data == 1) {
+                $("#apmntControl" + $id).html('Started!');
+            }
+            if (data == 2) {
+                $("#apmntControl" + $id).html('Completed!');
+            }
+        }
+    });
+});
+
+
 $(".user-nav").on("click", function (e) {
     //alert();
     e.preventDefault();
@@ -154,8 +184,10 @@ $(".user-nav").on("click", function (e) {
         break;
         case 'status':
             $url = 'data/appointmentstatus.php';
-            alert();
-            break;       
+            
+        case 'profile':
+            $url = 'data/userprofile.php';
+        break;       
 
 
     }
