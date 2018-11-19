@@ -23,8 +23,8 @@ switch($type){
         case 'district':
             districtAdd($conn);
             break;
-        case 'centerreg':
-            centerRegistration($conn);
+        case 'profileupdate':
+            profileUpdate($conn);
          break;
         default:
             break;
@@ -39,28 +39,30 @@ switch($type){
         $year=$_POST['year'];
         $engineno=$_POST['engineno'];
         $chasisno=$_POST['chasisno'];
-
+        $val=getSession('logid');
+        $sDirPath = 'upload/car/'.$vehno.'/'; //Specified Pathname
+        mkdir($sDirPath,0777,true);
         $path=$_FILES['rcbook']['name'];
-        $path = '/upload/car/'.$path;
+        $path = '/upload/car/'.$vehno.'/'.$path;
         $img=$_FILES['rcbook']['name'];
         $path1=$_FILES['car']['name'];
-        $path1 = '/upload/car/'.$path1;
+        $path1 = '/upload/car/'.$vehno.'/'.$path1;
         $img1=$_FILES['car']['name'];
-        $val=getSession('logid');
+
         $sql="SELECT `usrid` FROM `user` WHERE `logid`='$val'";
         $usid=mysqli_query($conn,$sql);
         $data1 = mysqli_fetch_assoc($usid);
         $usrid = $data1['usrid'];
         $sql1="INSERT INTO `car` (`vehno`, `usrid`, `brand`, `model`,`variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES ('$vehno','$usrid','$brand','$model','$variant','$fuel','$year','$color','$engineno','$chasisno','$path','$path1',1)";
         mysqli_query($conn,$sql1);
-        move_uploaded_file($_FILES['rcbook']['tmp_name'],'upload/car/' . $_FILES['rcbook']['name']);
-        move_uploaded_file($_FILES['car']['tmp_name'],'upload/car/' . $_FILES['car']['name']);
+        move_uploaded_file($_FILES['rcbook']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['rcbook']['name']);
+        move_uploaded_file($_FILES['car']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['car']['name']);
         echo "<script>alert('Car Added successfully');window.location='../user.php';</script>";
     }
 function searchCenter($conn){
     $district=$_POST['dist'];
     $brand=$_POST['brand'];
-    $sql="SELECT * FROM `servicecenter` WHERE `district`='$district' OR `brand`='$brand'";
+    $sql="SELECT * FROM `servicecenter` WHERE `district`='$district' AND `brand`='$brand'";
     //die();
     $val=mysqli_query($conn,$sql);
     if ($val) {
@@ -172,8 +174,15 @@ function makeAppointment($conn){
             echo "<script>alert('Please choose another day because of overloads');window.location='../user.php';</script>";
         }
     }
-        
-
-
-
+}
+function profileUpdate($conn){
+    $fname=$_POST['fname'];
+    $lname=$_POST['lname'];
+    $mob=$_POST['mobile'];
+    $dist=$_POST['district'];
+    $place=$_POST['place'];
+    $logid=getSession('logid');
+    $sql="UPDATE `user` SET `fname`='$fname',`lname`='$lname',`mobile`='$mob',`district`='$dist',`place`='$place' WHERE `logid`='$logid'";
+    mysqli_query($conn,$sql);
+    echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
 }

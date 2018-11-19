@@ -23,30 +23,12 @@ if(!getSession('logid'))
 <div class="view full-page-intro" >
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
-
-      <!-- Brand -->
-      <a class="navbar-brand" href="user.php">
-        <strong>Home</strong>
-      </a>
-
-   
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
+  
+ <nav>
+  <ul id='menu'>
+    <li><a class='home' href='user.php'>Home</a></li>
+  </ul>
+</nav>
   <!-- Navbar -->
 
   <div class="main">
@@ -92,7 +74,7 @@ if(!getSession('logid'))
     <td>
      <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="brand" id="brand">
+       <select class="form-control" name="brand" id="brand" required>
            <?php
             include('data/brand.php');
            ?>
@@ -105,7 +87,7 @@ if(!getSession('logid'))
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="model" id="model">
+       <select class="form-control" name="model" id="model" required>
           
         </select >
         </div>
@@ -116,7 +98,7 @@ if(!getSession('logid'))
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class=" form-control" name="variant" id="variant">        
+       <select class=" form-control" name="variant" id="variant" required>        
        <!--echo '<option value=Select>Choose the brand</option>';-->
         </select >
         </div>
@@ -127,7 +109,7 @@ if(!getSession('logid'))
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="fuel" id="fuel">                  
+       <select class="form-control" name="fuel" id="fuel" required>                  
         </select >
         </div>
         </td>
@@ -152,7 +134,7 @@ if(!getSession('logid'))
         <td><label>Engine Number</label></td>
         <td>
         <div class="md-form">
-        <input type="text" class="form-control" name="engineno" id="engineno">                   
+        <input type="text" class="form-control validate" name="engineno" id="engineno" data-type="engineno">                   
         </div>
         </td>
         </tr>
@@ -160,7 +142,7 @@ if(!getSession('logid'))
         <td><label>Chasis Number</label></td>
         <td>
         <div class="md-form">                  
-        <input type="text" id="chasisno" class="form-control validate" name="chasisno" >
+        <input type="text" id="chasisno" class="form-control validate" name="chasisno" data-type="chasisno" >
         </div>  
         </td>
         </tr>
@@ -168,7 +150,7 @@ if(!getSession('logid'))
         <td><label>Choose RC Book</label></td>
         <td>
         <div class="md-form">                  
-        <input type="file" id="rcbook" class="form-control " name="rcbook" accept=".jpeg,.jpg,.png">
+        <input type="file" id="rcbook" class="form-control validate" name="rcbook" accept=".jpeg,.jpg,.png">
         <label for="form3"></label>
         </div> 
         </td>
@@ -177,7 +159,7 @@ if(!getSession('logid'))
         <td><label>Choose Car Image</label></td>
         <td>
         <div class="md-form">                  
-        <input type="file" id="car" class="form-control " name="car" accept=".jpeg,.jpg,.png">
+        <input type="file" id="car" class="form-control validate" name="car" accept=".jpeg,.jpg,.png">
         <label for="form3"></label>
         </div> 
         </td>

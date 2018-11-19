@@ -20,9 +20,6 @@ switch($type){
         case 'userreg':
             userProfile($conn);
             break;
-        case 'district':
-            districtAdd($conn);
-            break;
         case 'centerreg':
             centerRegistration($conn);
          break;
@@ -94,19 +91,12 @@ function userLogin($conn){
         if($a == 'admin')
         { 
             $id = $result['logid'];
-            // print_r($id);
             $utype = $result['usertype'];
             setSession('logid', $id);
-            setSession('utype', $id);
-            // print_r($id);
+            setSession('utype', $utype);
+            //print_r($id);
             echo "<script>alert('Login Successfull');window.location='../adminhome.php';</script>";
-    
-        // header('location:user.php');
 
-          //  while($result = $res->fetch_assoc()) {
-            //echo('tes');
-        
-          //  }
         }
         else if($a=="user")
         { 
@@ -167,14 +157,15 @@ function userProfile($conn){
     $mob=$_POST['mobno'];
     $dist=$_POST['district'];
     $place=$_POST['place'];
-
-
-
+    //$logid=getSession('logid');
+    $val=getSession('logid');
+    $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
+    mkdir($sDirPath,0777,true);
     $path=$_FILES['photo']['name'];
-    $path = '/upload/'.$path;
+    $path = '/upload/'.$val.'/'.$path;
     $img=$_FILES['photo']['name'];
     //print_r($img);
-    $val=getSession('logid');
+ 
 
     $z="select * from login where logid='$val'";
     $r1=mysqli_query($conn,$z);
@@ -184,7 +175,7 @@ function userProfile($conn){
 
     $sql= "INSERT INTO `user` (`logid`,`fname`,`lname`,`email`,`mobile`,`district`,`place`,`photo`) VALUES ('$val','$fname','$lname','$email','$mob','$dist','$place','$path')";
     $r2=mysqli_query($conn,$sql);
-    move_uploaded_file($_FILES['photo']['tmp_name'],'upload/' . $_FILES['photo']['name']);
+    move_uploaded_file($_FILES['photo']['tmp_name'],'upload/'.$val.'/'. $_FILES['photo']['name']);
     $sql2="UPDATE `login` SET `status`=1 where `logid`=$val";
     mysqli_query($conn,$sql2);
     echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
@@ -196,14 +187,7 @@ function userProfile($conn){
         
 }
 
-function districtAdd($conn){//adding district
-    $dname=$_POST['dname'];
-   
-    $sql="INSERT INTO district (district) VALUES ('$dname')";
-    mysqli_query($conn,$sql);
-    echo "<script>alert('registered successfully');window.location='../districtadd.php';</script>";   
-   
-}
+
 
 function centerRegistration($conn){
     $cname=$_POST['cname'];

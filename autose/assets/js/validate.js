@@ -13,6 +13,7 @@ $("#login").submit(function (e) {
             $("#login").unbind().submit();
         }
         // $("#regForm").unbind().submit();
+
     } else {
         userAlert("Invalid details");
     }
@@ -52,6 +53,9 @@ function inputValidate($value, $type, $optional, $class) {
     $telPattern = /^([0-9]{10})?$/;
     $numberPattern = /^([0-9])?$/;
     $textPattern = /[A-Za-z]/;
+    $modelPattern = /[A-Za-z0-9]/;
+    $enginePattern=/[A-Z]{1}[0-9]{1}[A-Z]{2}[0-9]{7}/;
+    $chasisPattern=/[A-Z]{2}[0-9]{1}[A-Z]{3}[0-9]{2}[A-Z]{1}[0-9]{8}[A-Z]{2}/;
     $namePattern = /[A-Za-z]/;
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
@@ -72,11 +76,23 @@ function inputValidate($value, $type, $optional, $class) {
             
             if ($class == "name") {
                 pattern = $namePattern;
-                $message = "Name should contain letters only."
+                $message = "Should contain letters only."
+            }
+            if ($class == "model") {
+                pattern = $modelPattern;
+                $message = "Should contain letters and digits only."
             }
             if ($class == "regno") {
                 pattern = $vehnoPattern;
                 $message = "Should enter in correct format. Eg: KL 07 XX 0001"
+            }
+            if ($class == "engineno") {
+                pattern = $enginePattern;
+                $message = "Should enter in correct format. Eg: XX1XXX11X11111111XX"
+            }
+            if ($class == "chasisno") {
+                pattern = $chasisPattern;
+                $message = "Should enter in correct format. Eg: X1XX111111"
             }
             else{
                 pattern = $textPattern;

@@ -25,6 +25,8 @@ if ($val) {
 </head>
 
 <body>
+
+<div class="mt-4 py-3">
     <table>
         <thead>
             <tr>
@@ -59,12 +61,14 @@ if ($val) {
             ?>
         </tbody>
     </table>
-</body>
+    </div>
 
-</html>
 <?php
    }
  else {
     echo "0 results";
 }
 ?>
+</body>
+</div>
+</html>

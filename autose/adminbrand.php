@@ -23,67 +23,12 @@ if(!getSession('logid'))
 <div class="view full-page-intro" >
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
+  <nav>
 
-      <!-- Brand -->
-      <a class="navbar-brand" href="adminhome.php">
-        <strong>Home</strong>
-      </a>
-
-   
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-     <!--
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-          </li>
-        </ul>
-
-      
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-     -->
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
-  <!-- Navbar -->
+<ul id='menu'>
+  <li><a class='home' href='adminhome.php'>Home</a></li>
+</ul>
+</nav>
 
   <div class="main">
       <!-- Content -->
@@ -135,7 +80,7 @@ if(!getSession('logid'))
                   <hr>
 
                   <div class="md-form">                  
-                    <input type="text" id="brand" class="form-control validate" name="brand" >
+                    <input type="text" id="brand" class="form-control validate" name="brand" data-type="name" >
                     <label for="form3">Brand Name</label>
                   </div>
                 <!--  <div class="md-form">
@@ -145,17 +90,20 @@ if(!getSession('logid'))
 
                  
                   <div class="md-form">                  
-                    <input type="text" id="model" class="form-control validate" name="model" >
+                    <input type="text" id="model" class="form-control validate" name="model" data-type="model" >
                     <label for="form3"> Model</label>
                   </div>
                  
                   <div class="md-form">                  
-                    <input type="text" id="Variant" class="form-control validate" name="variant" >
+                    <input type="text" id="Variant" class="form-control validate" name="variant" data-type="model" >
                     <label for="form3">Variant</label>
                   </div> 
-                  <div class="md-form">                  
-                    <input type="text" id="fuel" class="form-control validate" name="fuel" >
-                    <label for="form3">Fuel</label>
+                  <div class="md-form">                    
+                    <select class="form-control" name="fuel" id="fuel" required>
+                      <?php
+                        include('data/addfuel.php');
+                       ?>
+                     </select >
                   </div>
                   <div class="text-center">
                     <input type="submit" class="btn btn-indigo" value="Add"> 

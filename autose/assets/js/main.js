@@ -76,6 +76,10 @@ $(document).ready(function () {
             case 'viewuser':
                 $url = 'data/admindata.php';
                 break;
+             case 'viewdistrict':
+             alert();
+                $url = 'data/admindata.php';
+            break;
 
         }
 
@@ -184,7 +188,7 @@ $(".user-nav").on("click", function (e) {
         break;
         case 'status':
             $url = 'data/appointmentstatus.php';
-            
+        break;
         case 'profile':
             $url = 'data/userprofile.php';
         break;       
