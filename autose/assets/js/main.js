@@ -84,6 +84,10 @@ $(document).ready(function () {
            // alert();
                $url = 'data/aprovecar.php';
            break;
+           case 'viewcar':
+           // alert();
+               $url = 'data/adminviewcar.php';
+           break;
         }
 
         $.ajax({

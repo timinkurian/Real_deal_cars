@@ -19,12 +19,13 @@ if(!getSession('logid'))
       <ul class='menus'>
       <li><a href='addcar.php' class="user-nav" title='Profile View' data-type="profile" >View Profile</a></li>
         <li><a href='usereditprofile.php' title='View car'  data-type="editprofile">Edit Profile</a></li>
+       <li><a href='changepassword.php' title='View car'  data-type="changepass">Change Password</a></li>
       </ul>
     </li>
     <li><a class='prett' href='#' title='add car'>CAR</a>
       <ul class='menus'>
       <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>
-        <li><a href='' title='View car' class="user-nav" data-type="viewcar">View Car</a></li>
+      <li><a href='' title='View car' class="user-nav" data-type="viewcar">View Car</a></li>
       </ul>
     </li>
     <li><a class='prett' href='#' title='Appointment'>Appointment</a>

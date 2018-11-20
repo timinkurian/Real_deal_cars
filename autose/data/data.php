@@ -23,6 +23,9 @@ switch($type){
         case 'centerreg':
             centerRegistration($conn);
          break;
+         case 'forget':
+            forgetPassword($conn);
+        break;
         default:
             break;
     }   
@@ -30,8 +33,8 @@ switch($type){
 function regUser($conn){
     $email=$_POST['email'];
     $desg=$_POST['designation'];
-    $pswd=md5($_POST['pswd']);
-    $cpswd=md5($_POST['cpswd']);
+    $pswd=base64_encode($_POST['pswd']);
+    $cpswd=base64_encode($_POST['cpswd']);
     
 
         
@@ -76,7 +79,7 @@ function regUser($conn){
 //user fns
 function userLogin($conn){
     $uname = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = base64_encode($_POST['password']);
 
     $sql = "SELECT * FROM `login` WHERE username='$uname' and password = '$password' and status != 0";
 
@@ -236,3 +239,26 @@ function centerRegistration($conn){
          
 }
 
+function forgetPassword($conn){
+    $email=$_POST['email'];
+    $sql="SELECT * FROM `login` WHERE `username`='$email'";
+	$result=mysqli_query($conn,$sql);
+	$row=mysqli_fetch_assoc($result);
+    $a=$row['username'];
+    if($a==$email)
+	{
+	$e=$row['username'];
+   // $p="Password:".$row['password'];
+    $pass=$row['password'];
+    $pa=base64_decode($pass);
+    $p="Password:".$pa;
+    $m="Username:".$e."\r\n".$p;
+	mail($e,"Recover",$m);
+    echo "<script>alert('Authentication Success Please check your mail');window.location='../index.php';</script>";
+	}
+	else{
+        echo "<script>alert('Please provide valid informations');window.location='../index.php';</script>";
+    }
+    
+	
+}

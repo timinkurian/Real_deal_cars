@@ -157,6 +157,7 @@ if(!getSession('logid')){
                   <div class="md-form">
 
                     <a class="nav-link" align="center" href="reguser.php" target="">New user? Register here</a>
+                    <a class="nav-link" align="center" href="forget.php" target="">Forgot password?</a>
                   </div>
 
                 </form>

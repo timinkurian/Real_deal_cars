@@ -28,7 +28,7 @@ if(!getSession('logid'))
       <li><a class='prett' href='#' title='Car'>Car</a>
       <ul class='menus'>
       <li><a href='' title='Approve Car' class="adm-nav" data-type="Caraprove">Aprove or Reject</a></li>
-      <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
+      <li><a href='#' title='View Car' class="adm-nav" data-type="viewcar">View All</a></li>
       </ul>
     </li>
     <li><a class='prett' href='#' title='District'>District</a>
@@ -40,7 +40,6 @@ if(!getSession('logid'))
     <li><a class='prett' href='#' title='Users'>Users</a>
       <ul class='menus'>
       <li><a href='' title='New Brand' class="adm-nav" data-type="viewuser">View Users</a></li>
-      <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
       </ul>
     </li>
 
