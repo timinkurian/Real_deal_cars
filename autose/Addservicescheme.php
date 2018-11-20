@@ -142,7 +142,7 @@ require('data/session.php');
                     <td><label>Checking Parts</label></td>
                     <td>
                     <div class="md-form">
-                    <input type="textarea" class="form-control validate" name="checking" id="checking"data-type="model">                   
+                    <input type="textarea" class="form-control validate" name="checking" id="checking">                   
                     </div>
                     </td>
                     </tr>
@@ -150,7 +150,7 @@ require('data/session.php');
                     <td><label>Approximate Amount</label></td>
                     <td>
                     <div class="md-form">                  
-                    <input type="number" id="amount" class="form-control validate" name="amount" >
+                    <input type="text" id="amount" class="form-control validate" name="amount" data-type="digits" >
                     </div>  
                     </td>
                     </tr>

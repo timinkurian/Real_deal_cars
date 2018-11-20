@@ -200,7 +200,10 @@ $(".user-nav").on("click", function (e) {
         break;
         case 'profile':
             $url = 'data/userprofile.php';
-        break;       
+        break; 
+                case 'status':
+            $url = 'data/appointmentstatus.php';
+        break;      
 
 
     }
@@ -234,5 +237,30 @@ $("body").on("click", ".user-click", function (e) {
     
      });
  });
+
+ $("body").on("click", ".usr-click", function (e) {
+    // e.preventDefault();
+   
+    $type = $(this).data('type');
+    $id = $(this).data('id');
+    //alert($id);
+    $.ajax({
+
+        url: 'data/userdata.php',
+        method: 'post',
+        data: { 'type': $type, 'id': $id },
+        success: function (data) {
+            console.log(data);
+
+            //  $("#pageData").html(data);
+            if (data == 1) {
+                $("#servControl" + $id).html('Cancelled');
+            }
+            if (data == 2) {
+                $("#servControl" + $id).html('Booked');
+            }
+        }
+    });
+});
 
  

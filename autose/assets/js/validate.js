@@ -50,13 +50,13 @@ function inputValidate($value, $type, $optional, $class) {
     }
     //regex set for validation
     var pattern;
-    $telPattern = /(7|8|9)\d{9}$/
+    $telPattern = /(7|8|9)\d{8}$/
     $numberPattern = /^([0-9])?$/;
     $textPattern = /^([A-Za-z])$/;
     $modelPattern = /[A-Za-z0-9]$/;
     $enginePattern=/[A-Z]{1}[0-9]{1}[A-Z]{2}[0-9]{7}/;
     $chasisPattern=/[A-Z]{2}[0-9]{1}[A-Z]{3}[0-9]{2}[A-Z]{1}[0-9]{8}[A-Z]{2}/;
-    $namePattern =  /([a-zA-Z]){3,}$/ 
+    $namePattern =  /([a-zA-Z]){3}$/ 
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
     $namePattern = /[A-Za-z]/;
@@ -93,6 +93,10 @@ function inputValidate($value, $type, $optional, $class) {
             if ($class == "chasisno") {
                 pattern = $chasisPattern;
                 $message = "Should enter in correct format. Eg: XX1XXX11X11111111XX"
+            }
+            if ($class == "digits") {
+                pattern = $numberPattern;
+                $message = "Should contain numbers only."
             }
             //else{
              //   pattern = $textPattern;

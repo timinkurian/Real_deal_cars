@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2018 at 11:27 AM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: Nov 20, 2018 at 06:37 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,9 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `appointment`
 --
 
-DROP TABLE IF EXISTS `appointment`;
-CREATE TABLE IF NOT EXISTS `appointment` (
-  `apid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `appointment` (
+  `apid` int(11) NOT NULL,
   `date` date NOT NULL,
   `vehno` varchar(15) NOT NULL,
   `usrid` int(11) NOT NULL,
@@ -38,18 +37,15 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `stype` int(11) NOT NULL,
   `sname` varchar(100) NOT NULL,
   `remarks` varchar(500) NOT NULL,
-  `status` varchar(20) NOT NULL,
-  PRIMARY KEY (`apid`),
-  KEY `usrid` (`usrid`),
-  KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`apid`, `date`, `vehno`, `usrid`, `scid`, `stype`, `sname`, `remarks`, `status`) VALUES
-(1, '2018-11-21', 'KL 06 H 3595', 23, 4, 1, 'First Service', 'Nil', 'booked');
+(5, '2018-11-21', 'KL 06 H 3595', 24, 6, 6, 'First service', 'Nil', 'booked');
 
 -- --------------------------------------------------------
 
@@ -57,15 +53,13 @@ INSERT INTO `appointment` (`apid`, `date`, `vehno`, `usrid`, `scid`, `stype`, `s
 -- Table structure for table `brand`
 --
 
-DROP TABLE IF EXISTS `brand`;
-CREATE TABLE IF NOT EXISTS `brand` (
-  `brandid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `brand` (
+  `brandid` int(11) NOT NULL,
   `brandname` varchar(25) NOT NULL,
   `model` varchar(20) NOT NULL,
   `variant` varchar(25) NOT NULL,
-  `fuel` varchar(10) NOT NULL,
-  PRIMARY KEY (`brandid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `fuel` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brand`
@@ -85,9 +79,8 @@ INSERT INTO `brand` (`brandid`, `brandname`, `model`, `variant`, `fuel`) VALUES
 -- Table structure for table `car`
 --
 
-DROP TABLE IF EXISTS `car`;
-CREATE TABLE IF NOT EXISTS `car` (
-  `vid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `car` (
+  `vid` int(11) NOT NULL,
   `vehno` varchar(15) NOT NULL,
   `usrid` int(10) NOT NULL,
   `brand` varchar(25) NOT NULL,
@@ -100,17 +93,15 @@ CREATE TABLE IF NOT EXISTS `car` (
   `chasisno` varchar(30) NOT NULL,
   `rcbook` varchar(500) NOT NULL,
   `image` varchar(500) NOT NULL,
-  `status` varchar(25) NOT NULL,
-  PRIMARY KEY (`vid`),
-  KEY `usrid` (`usrid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `status` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `car`
 --
 
 INSERT INTO `car` (`vid`, `vehno`, `usrid`, `brand`, `model`, `variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES
-(1, 'KL 06 H 3595', 23, 'maruti suzuki', 'alto800', 'lx', 'petrol', '2018-10-31', 'white', 'E5HT7836959', 'CH7TYG25E89725419XY', '/upload/car/KL 06 H 3595/2 (3).jpg', '/upload/car/KL 06 H 3595/2.jpg', 'aproved');
+(2, 'KL 06 H 3595', 24, 'maruti suzuki', 'alto800', 'lx', 'petrol', '2018-10-30', 'white', 'E5HT7836959', 'CH7TYG25E89725419XY', '/upload/car/KL 06 H 3595/2.jpg', '/upload/car/KL 06 H 3595/6 (3).jpg', 'aproved');
 
 -- --------------------------------------------------------
 
@@ -118,13 +109,11 @@ INSERT INTO `car` (`vid`, `vehno`, `usrid`, `brand`, `model`, `variant`, `fuel`,
 -- Table structure for table `designation`
 --
 
-DROP TABLE IF EXISTS `designation`;
-CREATE TABLE IF NOT EXISTS `designation` (
-  `desid` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `designation` (
+  `desid` int(10) NOT NULL,
   `designation` varchar(20) NOT NULL,
-  `status` int(5) NOT NULL,
-  PRIMARY KEY (`desid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `designation`
@@ -140,12 +129,10 @@ INSERT INTO `designation` (`desid`, `designation`, `status`) VALUES
 -- Table structure for table `district`
 --
 
-DROP TABLE IF EXISTS `district`;
-CREATE TABLE IF NOT EXISTS `district` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `district` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+CREATE TABLE `district` (
+  `id` int(2) NOT NULL,
+  `district` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `district`
@@ -165,12 +152,10 @@ INSERT INTO `district` (`id`, `district`) VALUES
 -- Table structure for table `fuel`
 --
 
-DROP TABLE IF EXISTS `fuel`;
-CREATE TABLE IF NOT EXISTS `fuel` (
-  `fid` int(11) NOT NULL AUTO_INCREMENT,
-  `fuel` varchar(15) NOT NULL,
-  PRIMARY KEY (`fid`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `fuel` (
+  `fid` int(11) NOT NULL,
+  `fuel` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `fuel`
@@ -188,28 +173,22 @@ INSERT INTO `fuel` (`fid`, `fuel`) VALUES
 -- Table structure for table `login`
 --
 
-DROP TABLE IF EXISTS `login`;
-CREATE TABLE IF NOT EXISTS `login` (
-  `logid` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `login` (
+  `logid` int(10) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(500) NOT NULL,
   `usertype` varchar(25) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`logid`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1;
+  `status` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`logid`, `username`, `password`, `usertype`, `status`) VALUES
-(149, 'alan@mail.com', '0541c626be6852ab369f571e974a7b30', 'user', 2),
-(152, 'mgf@mail.com', '8e2a6024b294b21f50c10d55f6fc647d', 'servicecenter', 1),
-(154, 'avg@mail.com', '7dc9037a9a019719d852c24bd19cf7e8', 'servicecenter', 1),
-(156, 'nippon@mail.com', '786353c6538f59040c904ecc2f71ddc7', 'servicecenter', 1),
-(157, 'timinkurian@gmail.com', 'f4edb480cca1633e241f913c2035e5d9', 'user', 1),
-(158, 'admin@gmail.com', 'e6e061838856bf47e1de730719fb2609', 'admin', 1);
+(160, 'rdcmainproject@gmail.com', 'YWRtaW5AMTIz', 'admin', 1),
+(161, 'timinkurian@gmail.com', 'dGltaW5AMTIz', 'user', 1),
+(162, 'timinkurian@mca.ajce.in', 'Y2VudGVyQDEyMw==', 'servicecenter', 1);
 
 -- --------------------------------------------------------
 
@@ -217,24 +196,20 @@ INSERT INTO `login` (`logid`, `username`, `password`, `usertype`, `status`) VALU
 -- Table structure for table `scount`
 --
 
-DROP TABLE IF EXISTS `scount`;
-CREATE TABLE IF NOT EXISTS `scount` (
-  `countid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `scount` (
+  `countid` int(11) NOT NULL,
   `date` date NOT NULL,
   `scid` int(11) NOT NULL,
   `typeid` int(11) NOT NULL,
-  `count` int(11) NOT NULL,
-  PRIMARY KEY (`countid`),
-  KEY `typeid` (`typeid`),
-  KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `scount`
 --
 
 INSERT INTO `scount` (`countid`, `date`, `scid`, `typeid`, `count`) VALUES
-(1, '2018-11-21', 4, 1, 1);
+(2, '2018-11-21', 6, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -242,9 +217,8 @@ INSERT INTO `scount` (`countid`, `date`, `scid`, `typeid`, `count`) VALUES
 -- Table structure for table `servicecenter`
 --
 
-DROP TABLE IF EXISTS `servicecenter`;
-CREATE TABLE IF NOT EXISTS `servicecenter` (
-  `scid` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `servicecenter` (
+  `scid` int(10) NOT NULL,
   `logid` int(10) NOT NULL,
   `centername` varchar(25) NOT NULL,
   `licenceno` varchar(25) NOT NULL,
@@ -253,19 +227,15 @@ CREATE TABLE IF NOT EXISTS `servicecenter` (
   `district` varchar(15) NOT NULL,
   `place` varchar(15) NOT NULL,
   `certificate` varchar(1000) NOT NULL,
-  `mobile` bigint(10) NOT NULL,
-  PRIMARY KEY (`scid`),
-  KEY `logid` (`logid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `mobile` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `servicecenter`
 --
 
 INSERT INTO `servicecenter` (`scid`, `logid`, `centername`, `licenceno`, `type`, `brand`, `district`, `place`, `certificate`, `mobile`) VALUES
-(3, 152, 'mgf', 'lic123', 'Authorized', 'hyundai', 'Idukki', 'adimali', '/upload/alone_boy.jpeg', 7894561230),
-(4, 154, 'AVG', 'lic124', 'Authorized', 'maruti suzuki', 'Ernakulam', 'aluva', '/upload/_20170622_155215.JPG', 9847256314),
-(5, 156, 'Nippon', 'lic7894123', 'Authorized', 'Tata', 'Idukki', 'Kattappana', '/upload/156/dfg.jpg', 9847390089);
+(6, 162, 'MGF', 'lic8956', 'Authorized', 'maruti suzuki', 'Idukki', 'Kattappana', '/upload/162/p.jpg', 9656874712);
 
 -- --------------------------------------------------------
 
@@ -273,10 +243,9 @@ INSERT INTO `servicecenter` (`scid`, `logid`, `centername`, `licenceno`, `type`,
 -- Table structure for table `servicescheme`
 --
 
-DROP TABLE IF EXISTS `servicescheme`;
-CREATE TABLE IF NOT EXISTS `servicescheme` (
+CREATE TABLE `servicescheme` (
   `scid` int(11) NOT NULL,
-  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
   `typeid` int(11) NOT NULL,
   `brand` varchar(30) NOT NULL,
   `model` varchar(30) NOT NULL,
@@ -285,20 +254,16 @@ CREATE TABLE IF NOT EXISTS `servicescheme` (
   `stype` varchar(100) NOT NULL,
   `replaced` varchar(500) NOT NULL,
   `checked` varchar(500) NOT NULL,
-  `amount` float NOT NULL,
-  PRIMARY KEY (`sid`),
-  KEY `scid` (`scid`),
-  KEY `typeid` (`typeid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `amount` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `servicescheme`
 --
 
 INSERT INTO `servicescheme` (`scid`, `sid`, `typeid`, `brand`, `model`, `variant`, `fuel`, `stype`, `replaced`, `checked`, `amount`) VALUES
-(3, 5, 1, 'hyundai', 'eon', 'magna', 'petrol', 'First service', 'Engine oil', 'All Parts', 1400),
-(3, 6, 2, 'hyundai', 'eon', 'magna', 'petrol', 'Full Painting', 'Nil', 'Nil', 15000),
-(4, 7, 1, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'First Service', 'Engine oil', 'All Parts', 1300);
+(6, 8, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'First service', 'Engine oil', 'All Parts', 1000),
+(6, 10, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'Second Service', 'Air and oil filters', 'All Parts', 1100);
 
 -- --------------------------------------------------------
 
@@ -306,25 +271,20 @@ INSERT INTO `servicescheme` (`scid`, `sid`, `typeid`, `brand`, `model`, `variant
 -- Table structure for table `stypes`
 --
 
-DROP TABLE IF EXISTS `stypes`;
-CREATE TABLE IF NOT EXISTS `stypes` (
-  `typeid` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stypes` (
+  `typeid` int(5) NOT NULL,
   `scid` int(10) NOT NULL,
   `sname` varchar(100) NOT NULL,
-  `maximum` int(11) NOT NULL,
-  PRIMARY KEY (`typeid`),
-  KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `maximum` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stypes`
 --
 
 INSERT INTO `stypes` (`typeid`, `scid`, `sname`, `maximum`) VALUES
-(1, 3, 'Periodic Services', 5),
-(2, 3, 'Painting', 3),
-(4, 3, 'Body Works', 5),
-(5, 4, 'Periodic services', 6);
+(6, 6, 'Periodic Services', 5),
+(7, 6, 'Painting', 3);
 
 -- --------------------------------------------------------
 
@@ -332,9 +292,8 @@ INSERT INTO `stypes` (`typeid`, `scid`, `sname`, `maximum`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `usrid` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `usrid` int(10) NOT NULL,
   `logid` int(10) NOT NULL,
   `fname` varchar(15) NOT NULL,
   `lname` varchar(15) NOT NULL,
@@ -342,17 +301,178 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mobile` bigint(10) NOT NULL,
   `district` varchar(25) NOT NULL,
   `place` varchar(25) NOT NULL,
-  `photo` varchar(100) NOT NULL,
-  PRIMARY KEY (`usrid`),
-  KEY `logid` (`logid`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  `photo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`usrid`, `logid`, `fname`, `lname`, `email`, `mobile`, `district`, `place`, `photo`) VALUES
-(23, 157, 'Timin', 'Kurian', 'timinkurian@gmail.com', 9847390002, 'Idukki', 'Kattappana', '/upload/157/IMG_4362.JPG');
+(24, 161, 'Timin', 'Kurian', 'timinkurian@gmail.com', 9847390002, 'Idukki', 'Kattappana', '/upload/161/IMG_4367.JPG');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`apid`),
+  ADD KEY `usrid` (`usrid`),
+  ADD KEY `scid` (`scid`);
+
+--
+-- Indexes for table `brand`
+--
+ALTER TABLE `brand`
+  ADD PRIMARY KEY (`brandid`);
+
+--
+-- Indexes for table `car`
+--
+ALTER TABLE `car`
+  ADD PRIMARY KEY (`vid`),
+  ADD KEY `usrid` (`usrid`);
+
+--
+-- Indexes for table `designation`
+--
+ALTER TABLE `designation`
+  ADD PRIMARY KEY (`desid`);
+
+--
+-- Indexes for table `district`
+--
+ALTER TABLE `district`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fuel`
+--
+ALTER TABLE `fuel`
+  ADD PRIMARY KEY (`fid`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`logid`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `scount`
+--
+ALTER TABLE `scount`
+  ADD PRIMARY KEY (`countid`),
+  ADD KEY `typeid` (`typeid`),
+  ADD KEY `scid` (`scid`);
+
+--
+-- Indexes for table `servicecenter`
+--
+ALTER TABLE `servicecenter`
+  ADD PRIMARY KEY (`scid`),
+  ADD KEY `logid` (`logid`);
+
+--
+-- Indexes for table `servicescheme`
+--
+ALTER TABLE `servicescheme`
+  ADD PRIMARY KEY (`sid`),
+  ADD KEY `scid` (`scid`),
+  ADD KEY `typeid` (`typeid`);
+
+--
+-- Indexes for table `stypes`
+--
+ALTER TABLE `stypes`
+  ADD PRIMARY KEY (`typeid`),
+  ADD KEY `scid` (`scid`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`usrid`),
+  ADD KEY `logid` (`logid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `brand`
+--
+ALTER TABLE `brand`
+  MODIFY `brandid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `car`
+--
+ALTER TABLE `car`
+  MODIFY `vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `designation`
+--
+ALTER TABLE `designation`
+  MODIFY `desid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `district`
+--
+ALTER TABLE `district`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `fuel`
+--
+ALTER TABLE `fuel`
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `logid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+
+--
+-- AUTO_INCREMENT for table `scount`
+--
+ALTER TABLE `scount`
+  MODIFY `countid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `servicecenter`
+--
+ALTER TABLE `servicecenter`
+  MODIFY `scid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `servicescheme`
+--
+ALTER TABLE `servicescheme`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `stypes`
+--
+ALTER TABLE `stypes`
+  MODIFY `typeid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `usrid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables

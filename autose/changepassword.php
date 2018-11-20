@@ -53,120 +53,21 @@ if(!getSession('logid'))
     <form name="" id="login" method="post" action="data/userdata.php" enctype="multipart/form-data" class="mt-5">
       <!-- Heading -->
       
-      <input type="text" hidden value="addcar" name="type">
+      <input type="text" hidden value="changepass" name="type">
       <h3 class="dark-grey-text text-center">
         <strong>CHANGE PASSWORD</strong>
       </h3>
       <hr>
-      <table>
-      <tr>
-      <td>Vehicle number</label></td>
-      <td>
       <div class="md-form">                  
-        <input type="text" id="vehno" class="form-control validate" name="vehno" maxlength=13 data-type="regno"></td>
-      <!--  <label for="form3">Service Name</label>-->
-     </div>
-     </td>
-     </tr>
-    <tr>
-
-    <td><label>Choose brand</label></td>
-    <td>
+        <input type="password" id="password" class="form-control validate" name="pswd">
+        <label for="form3">New Password</label>
+      </div>
      <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="brand" id="brand" required>
-           <?php
-            include('data/brand.php');
-           ?>
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Model</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="model" id="model" required>
-          
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Variant</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class=" form-control" name="variant" id="variant" required>        
-       <!--echo '<option value=Select>Choose the brand</option>';-->
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Fuel Type</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="fuel" id="fuel" required>                  
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Color</label></td>
-        <td>
-        <div class="md-form">
-        <input type="text" class="form-control validate" name="color" id="color" data-type="name" required>                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Manufacturing Year</label></td>
-        <td>
-        <div class="md-form">
-        <input type="date" class="form-control" name="year" id="year" >                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Engine Number</label></td>
-        <td>
-        <div class="md-form">
-        <input type="text" class="form-control validate" name="engineno" id="engineno" data-type="engineno">                   
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>Chasis Number</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="text" id="chasisno" class="form-control validate" name="chasisno" data-type="chasisno" >
-        </div>  
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose RC Book</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="file" id="rcbook" class="form-control" name="rcbook" accept=".jpeg,.jpg,.png" required >
-        <label for="form3"></label>
-        </div> 
-        </td>
-        </tr>
-        <tr>
-        <td><label>Choose Car Image</label></td>
-        <td>
-        <div class="md-form">                  
-        <input type="file" id="car" class="form-control " name="car" accept=".jpeg,.jpg,.png" required>
-        <label for="form3"></label>
-        </div> 
-        </td>
-        </tr>
-        </table>
+            <input type="password" id="password-confirm" class="form-control validate" name="cpswd">
+            <label for="form3">Confirm Password</label>
+    </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-indigo" value="Add"> 
+        <input type="submit" class="btn btn-indigo" value="Change"> 
         <hr>
     <!-- <fieldset class="form-check">
           <input type="checkbox" class="form-check-input" id="checkbox1">

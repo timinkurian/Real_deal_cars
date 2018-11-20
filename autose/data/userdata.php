@@ -26,6 +26,13 @@ switch($type){
         case 'profileupdate':
             profileUpdate($conn);
          break;
+         case 'changepass':
+            changePassword($conn);
+         break;
+         case 'apmntcancel':
+         //echo $_POST['type'];
+            appointmentCancel($conn);
+      break;
         default:
             break;
     }   
@@ -54,7 +61,7 @@ switch($type){
         $data1 = mysqli_fetch_assoc($usid);
         $usrid = $data1['usrid'];
 
-        $sql4="SELECT `*` FROM `car` WHERE `usrid`='$usrid' AND `engineno`='$engineno' AND `chasisno`='$chasisno'";
+        $sql4="SELECT * FROM `car` WHERE `usrid`='$usrid' AND `engineno`='$engineno' AND `chasisno`='$chasisno'";
         $count=mysqli_query($conn,$sql4);
         if(mysqli_num_rows($count)<1){
         $sql1="INSERT INTO `car` (`vehno`, `usrid`, `brand`, `model`,`variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES ('$vehno','$usrid','$brand','$model','$variant','$fuel','$year','$color','$engineno','$chasisno','$path','$path1','aproval Pending')";
@@ -142,7 +149,7 @@ function makeAppointment($conn){
     $data3 = mysqli_fetch_assoc($max);
     $maxcount = $data3['maximum'];
     //finding the booking for service type on a particular day
-    $sql4="SELECT `*` FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
+    $sql4="SELECT * FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
     $count=mysqli_query($conn,$sql4);
     if(mysqli_num_rows($count)<1){
             //table is empty directly into both tables
@@ -160,12 +167,13 @@ function makeAppointment($conn){
         $acount = $data3['count'];
         if($acount<$maxcount){
             //checking already applied or not
-            $sql9="SELECT `*` FROM `appointment` WHERE `vehno`='$vehno' AND `date`='$date' AND `scid`='$scid'";
+            $sql9="SELECT * FROM `appointment` WHERE `vehno`='$vehno' AND `date`='$date' AND `scid`='$scid'";
             $count1=mysqli_query($conn,$sql9);
             if(mysqli_num_rows($count1)<1){
                 $acount=$acount+1;
                 //not already applied and anyone is already applied for that particular service only upate is performed
-                $sql7="UPDATE `scount` SET `count`='$acount'";
+                 $sql7="UPDATE `scount` SET `count`='$acount'";
+                
                 mysqli_query($conn,$sql7);
                 //inserting to appointment table
                 $sql8="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$remarks','booked')";
@@ -192,4 +200,31 @@ function profileUpdate($conn){
     $sql="UPDATE `user` SET `fname`='$fname',`lname`='$lname',`mobile`='$mob',`district`='$dist',`place`='$place' WHERE `logid`='$logid'";
     mysqli_query($conn,$sql);
     echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
+}
+function changePassword($conn){
+    $paswd=base64_encode($_POST['pswd']);
+    $logid=getSession('logid');
+    $sql="UPDATE `login` SET `password`='$paswd' WHERE `logid`='$logid'";
+    mysqli_query($conn,$sql);
+    echo "<script>alert('Password updated successfully');window.location='../user.php';</script>";
+}
+function appointmentCancel($conn){
+    //echo "<script>alert('Your Booking Cancelled!');window.location='../user.php';</script>";
+    $apid=$_POST['id'];
+    $sql4="SELECT * FROM `appointment` WHERE `apid`='$apid'";
+    $row=mysqli_query($conn,$sql4);
+    $data1 = mysqli_fetch_assoc($row);
+    $typeid =$data1['stype'];
+    $scid=$data1['scid'];
+    $date=$data1['date'];
+    $sql5="SELECT `count` FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
+    $count=mysqli_query($conn,$sql5);
+    $data1 = mysqli_fetch_assoc($count);
+    $coun =$data1['count'];
+    $newc=$coun-1;
+    $sql1="UPDATE `scount` SET `count`='$newc'";
+    $sql="DELETE * FROM `appointment` WHERE `apid`='$apid' ";
+    mysqli_query($conn,$sql);
+    echo '1';
+   
 }

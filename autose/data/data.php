@@ -194,7 +194,7 @@ function userProfile($conn){
 
 function centerRegistration($conn){
     $cname=$_POST['cname'];
-    $licno=$_POST['licno'];
+    $licno="lic".$_POST['licno'];
     $type=$_POST['types'];
     $brand=$_POST['brand'];
     $mob=$_POST['mobno'];
