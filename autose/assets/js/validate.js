@@ -50,13 +50,13 @@ function inputValidate($value, $type, $optional, $class) {
     }
     //regex set for validation
     var pattern;
-    $telPattern = /^([0-9]{10})?$/;
+    $telPattern = /(7|8|9)\d{9}$/
     $numberPattern = /^([0-9])?$/;
-    $textPattern = /[A-Za-z]/;
-    $modelPattern = /[A-Za-z0-9]/;
+    $textPattern = /^([A-Za-z])$/;
+    $modelPattern = /[A-Za-z0-9]$/;
     $enginePattern=/[A-Z]{1}[0-9]{1}[A-Z]{2}[0-9]{7}/;
     $chasisPattern=/[A-Z]{2}[0-9]{1}[A-Z]{3}[0-9]{2}[A-Z]{1}[0-9]{8}[A-Z]{2}/;
-    $namePattern = /[A-Za-z]/;
+    $namePattern =  /([a-zA-Z]){3,}$/ 
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
     $namePattern = /[A-Za-z]/;
@@ -88,23 +88,19 @@ function inputValidate($value, $type, $optional, $class) {
             }
             if ($class == "engineno") {
                 pattern = $enginePattern;
-                $message = "Should enter in correct format. Eg: XX1XXX11X11111111XX"
+                $message = "Should enter in correct format. Eg: Eg: X1XX1111111"
             }
             if ($class == "chasisno") {
                 pattern = $chasisPattern;
-                $message = "Should enter in correct format. Eg: X1XX111111"
+                $message = "Should enter in correct format. Eg: XX1XXX11X11111111XX"
             }
-            else{
-                pattern = $textPattern;
-            }
+            //else{
+             //   pattern = $textPattern;
+            //}
             break;
         case "password":
             pattern = $pswdPattern;
             $message = "min. 6 characters, atleast 1 special character /"
-            break;
-            case "vehicle":
-            pattern = $vehnoPattern;
-            $message = "Invalid format(Eg:kl06ax9999) /"
             break;
         case "date":
             $value = formatDate($value);

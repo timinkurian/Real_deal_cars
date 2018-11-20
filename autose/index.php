@@ -93,19 +93,19 @@ if(!getSession('logid')){
           <!--Grid column-->
           <div class="col-md-8 mb-4 white-text text-center text-md-left">
 
-            <h1 class="display-4 font-weight-bold">Real Deal Autos</h1>
+            <h1 class="display-4 font-weight-bold">Real Deal Cars</h1>
 
             <hr class="hr-light">
 
             <p>
-              <strong>Welcome to Real Deal Autos </strong>
+              <strong>Welcome to Real Deal Cars </strong>
             </p>
 
             <p class="mb-4 d-none d-md-block">
-              <strong>It's world of Cars </strong>
+              <strong>It's a world of Cars </strong>
             </p>
 
-            <a href=reguser.php class="btn btn-indigo btn-lg">Register your service center
+            <a href=regcenter.php class="btn btn-indigo btn-lg">Register your service center
               <i class="fa fa-graduation-cap ml-2"></i>
             </a>
 

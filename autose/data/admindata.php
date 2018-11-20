@@ -26,6 +26,12 @@ switch($type){
         case 'viewdistrict':
             viewDistrict($conn);
         break;
+        case 'carapprove':
+            carAprove($conn);
+        break;
+        case 'carreject':
+            carReject($conn);
+        break;
         default:
         break;
     }   
@@ -61,7 +67,22 @@ function rejectCenter($conn){
     // echo "<script>alert('Approved');window.location=../adminhome.php;</script>";
     echo '2';
 }
+function carAprove($conn){
+   
+    $vid=$_POST['id'];
+    $sql="UPDATE `car` SET `status`= 'aproved' WHERE `vid`='$vid'";
+    mysqli_query($conn, $sql);
+    echo '1';
 
+}
+
+function carReject($conn){
+    $vid=$_POST['id'];
+    $sql="UPDATE `car` SET `status`= 'rejected' WHERE `vid`='$vid'";
+    mysqli_query($conn, $sql);
+    echo'2';
+
+}
 function districtAdd($conn){//adding district
     $dname=$_POST['dname'];
    

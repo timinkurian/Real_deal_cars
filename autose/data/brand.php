@@ -4,11 +4,11 @@ require "connect.php";
 //$brand=getSession('brand');
 
 $sql = "SELECT DISTINCT brandname FROM `brand`";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+$result = mysqli_query($conn,$sql);
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
     echo '<option value="">Choose the brand</option>';
-    while($row = $result->fetch_assoc()) {
+    while($row = mysqli_fetch_assoc($result)) {
         echo "<option value='".$row['brandname']."'>".$row['brandname']."</option>";
     }
 } else {

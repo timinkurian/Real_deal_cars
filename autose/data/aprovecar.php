@@ -1,15 +1,13 @@
 <?php
 require "connect.php";
-require "session.php";
-$logid=getSession('logid');
-$sql = "SELECT * FROM `car` WHERE `usrid`=(SELECT `usrid` from `user` WHERE `logid`='$logid' )";
+
+$sql = "SELECT * FROM `car` WHERE `status`='aproval pending'";
 $val=mysqli_query($conn,$sql);
 if ($val) {
     ?>
-<html>  
+<html>
 
 <head>
-
     <style>
         td, th {
                 border: 1px solid black; 
@@ -28,24 +26,24 @@ if ($val) {
 </head>
 
 <body>
-<div class="mt-4 py-3">
-
+<div class="mt-2 py-3">
+<form class="float-left py-3 px-5 mx-3">
     <table width="100%">
         <thead>
             <tr>
-                <th>Register Number</th>
+                <th>Registration No</th>
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Variant</th>
-                <th>Manufacturing Year</th>
-                <th>Engine Number</th> 
-                <th>Chasis Number</th> 
-                <th>RC Book</th> 
-                <th>Car Image</th> 
-                <th>Status</th>
+                <th>Manufatured Year</th>
+                <th>Engine Number</th>
+                <th>Chasis Number</th>
+                <th>RC Book</th>
+                <th>Car Photo</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody id="tbbody">
+        <tbody  id="tbbody">
             <?php
             while($result=mysqli_fetch_array($val)){
 
@@ -74,17 +72,19 @@ if ($val) {
                 </td>
                 <td>
                    
-                   <a href="data/<?php echo $result['rcbook']; ?>" target="_blank">
-                   <img src="data/<?php echo $result['rcbook']; ?>">
-                   </a>
-               </td>
-               <td>   
+                    <a href="data/<?php echo $result['rcbook']; ?>" target="_blank">
+                    <img src="data/<?php echo $result['rcbook']; ?>">
+            </a>
+                </td>
+                <td>
+                   
                    <a href="data/<?php echo $result['image']; ?>" target="_blank">
                    <img src="data/<?php echo $result['image']; ?>">
            </a>
                </td>
-               <td>
-                    <?php echo $result['status']; ?>
+                <td id="servControl<?php echo $result['vid']; ?>"> 
+                    <input type="button" class="btn btn-indigo adm-click" data-type="carapprove" data-id= <?php echo $result['vid']; ?> value="Approve">
+                    <input type="button" class="btn btn-indigo adm-click" data-type="carreject" data-id= <?php echo $result['vid']; ?> value="Reject">
                 </td>
             </tr>
                 <?php
@@ -92,6 +92,7 @@ if ($val) {
             ?>
         </tbody>
     </table>
+    </form>
     </div>
 </body>
 

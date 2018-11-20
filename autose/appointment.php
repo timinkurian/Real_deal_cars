@@ -28,20 +28,6 @@ setSession('scid',$scid);
 
 <ul id='menu'>
   <li><a class='home' href='user.php'>Home</a></li>
-  <li><a class='prett' href='#' title='add car'>CAR</a>
-    <ul class='menus'>
-    <li><a href='addcar.php' title='Addcar' data-type="addcar" >Add car</a></li>
-      <li><a href='' title='View car' class="user-nav" data-type="viewcar">View Car</a></li>
-    </ul>
-  </li>
-  <li><a class='prett' href='#' title='Appointment'>Appointment</a>
-    <ul class='menus'>
-    <li><a href='' title='New Brand' class="user-nav" data-type="appointment">Make an Appointment</a></li>
-    <li><a href='#' title='List all' data-type="viewappointmentstatus">Appointment Status</a></li>
-    </ul>
-  </li>
-  <li><a class='menus' href="components/logout.php">Logout</a></li>
-
 </ul>
 </nav>
   <!-- Navbar -->
@@ -86,7 +72,7 @@ setSession('scid',$scid);
       <td>
       <div class="md-form">                
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="vehno" id="vehno">
+       <select class="form-control" name="vehno" id="vehno" required>
           <?php
            include('data/car.php');
            ?>
@@ -99,30 +85,10 @@ setSession('scid',$scid);
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control" name="stype" id="stype">
+       <select class="form-control" name="stype" id="stype" required>
           <?php
           include('data/service.php');
           ?>
-        </select >
-        </div>
-        </td>
-        </tr>
-        <tr>
-        <td><label>When you reach</label></td>
-        <td>
-        <div class="md-form">                  
-       <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class=" form-control" name="time" id="time">        
-       <option value=Select>Choose time period</option>
-       <option value=8AM-9AM>8AM-9AM</option>
-       <option value=9AM-10AM>9AM-10AM</option>
-       <option value=10AM-11AM>10AM-11AM</option>
-       <option value=11AM-12PM>11AM-12PM</option>
-       <option value=12PM-1PM>12PM-1PM</option>
-       <option value=1PM-2PM>1PM-2PM</option>
-       <option value=2PM-3PM>2PM-3PM</option>
-       <option value=3PM-4PM>3PM-4PM</option>
-       <option value=4PM-5PM>4PM-5PM</option>
         </select >
         </div>
         </td>
@@ -131,7 +97,7 @@ setSession('scid',$scid);
         <td><label>Remarks</label></td>
         <td>
         <div class="md-form">
-        <input type="textarea" class="form-control" name="remarks" id="remarks">                   
+        <input type="textarea" class="form-control validate" name="remarks" id="remarks" data-type="model">                   
         </div>
         </td>
         </tr>

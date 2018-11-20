@@ -62,22 +62,22 @@ if(isset($_SESSION['logid'])){
                   <hr>
 
                   <div class="md-form">                  
-                    <input type="text" id="name" class="form-control validate" name="cname">
+                    <input type="text" id="name" class="form-control validate" name="cname" data-type="model">
                     <label for="form3">Center name</label>
                   </div>
                   <div class="md-form">
-                    <input type="text" id="licno" class="form-control validate" name="licno">
+                    <input type="text" id="licno" class="form-control validate" name="licno" data-type="model">
                     <label for="form2">Licence number</label>
                   </div>
                   <div class="md-form">                  
-                  <select name="types">
-                  <option value="">Type...</option>
+                  <select name="types" class="form-control" required>
+                  <option value="">Choose Type of Center</option>
                   <option value="Authorized">Authorized</option>
-                  <option value="Unauthorized">Unauthorized</option>
+                 <!-- <option value="Unauthorized">Unauthorized</option>-->
                   </select>
                   </div>
                   <div class="md-form">                  
-                  <select name="brand" >
+                  <select name="brand" class="form-control" required >
                       <?php
                       include('data/brand.php')
                       ?>
@@ -88,12 +88,12 @@ if(isset($_SESSION['logid'])){
                     <label for="form3">Email</label>
                   </div>-->
                   <div class="md-form">                  
-                    <input type="text" id="mobno" class="form-control validate" name="mobno">
+                    <input type="tel" id="mobno" class="form-control validate" name="mobno">
                     <label for="form3">Mobile Number</label>
                   </div>
-                  <div class="md-form">                  
+                  <div class="md-form" class="form-control" required>                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select name="district">
+                   <select name="district" class="form-control" required>
                        <?php
                         include('data/districts.php');
                        ?>
@@ -101,12 +101,12 @@ if(isset($_SESSION['logid'])){
                     <label for="form3"></label>
                   </div>
                   <div class="md-form">                  
-                    <input type="text" id="place" class="form-control validate" name="place">
+                    <input type="text" id="place" class="form-control validate" name="place" data-type="model">
                     <label for="form3">place</label>
                   </div>
                  
                   <div class="md-form">                  
-                    <input type="file" id="certificate" class="form-control " name="certificate">
+                    <input type="file" id="certificate" class="form-control " name="certificate" required>
                     <label for="form3"></label>
                   </div>
               <!--

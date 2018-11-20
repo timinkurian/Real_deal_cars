@@ -2,7 +2,7 @@
 require "connect.php";
 require "session.php";
 $logid=getSession('logid');
-$sql = "SELECT * FROM `appointment` WHERE `scid` = (SELECT `scid` FROM `servicecenter` WHERE `logid`='$logid') AND `status`='booked'";
+$sql = "SELECT * FROM `appointment` WHERE `scid` = (SELECT `scid` FROM `servicecenter` WHERE `logid`='$logid') AND `status`='Started'";
 $val=mysqli_query($conn,$sql);
 if ($val) {
     ?>
@@ -34,9 +34,10 @@ if ($val) {
                 <th>Customer Name</th>
                 <th>Vehicle Number</th>
                 <th>Date</th>
-                <th>Service Type</th>   
+                <th>Service Type</th>
                 <th>Remarks</th>
                 <th></th>
+                
                
             </tr>
         </thead>
@@ -71,7 +72,7 @@ if ($val) {
                     <?php echo $result['remarks']; ?>
                 </td>
                 <td id="servControl<?php echo $result['apid']; ?>"> 
-                    <input type="button" class="btn btn-indigo cntr-click" data-type="started" data-id= <?php echo $result['apid']; ?> value="Started">
+                    <input type="button" class="btn btn-indigo cntr-click" data-type="completed" data-id= <?php echo $result['apid']; ?> value="Completed">
                 </td>
                 
             </tr>

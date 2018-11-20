@@ -64,7 +64,7 @@ require('data/session.php');
                   <td><label>Service Name</label></td>
                   <td>
                   <div class="md-form">                  
-                  <select class="form-control" name="sname" id="sname">
+                  <select class="form-control validate" name="sname" id="sname" required>
                   <?php 
                     include('data/servicetype.php');
                   ?>
@@ -76,7 +76,7 @@ require('data/session.php');
                   <td>Service Type</label></td>
                   <td>
                   <div class="md-form">                  
-                    <input type="text" id="stype" class="form-control validate" name="stype" >
+                    <input type="text" id="stype" class="form-control validate" name="stype" data-type="model"  >
                   <!--  <label for="form3">Service Name</label>-->
                  </div>
                  </td>
@@ -87,7 +87,8 @@ require('data/session.php');
                 <td>
                  <div class="md-form">                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select class="form-control" name="brand" id="brand">
+                   <select class="form-control validate" name="brand" id="brand" required>
+                   echo '<option value=" ">Choose brand</option>';
                        <?php
                         include('data/servicebrand.php');
                        ?>
@@ -100,8 +101,8 @@ require('data/session.php');
                     <td>
                     <div class="md-form">                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select class="form-control" name="model" id="model">
-                      
+                   <select class="form-control validate" name="model" id="model" required>
+                   echo '<option value=" ">Choose Model</option>'; 
                     </select >
                     </div>
                     </td>
@@ -111,7 +112,8 @@ require('data/session.php');
                     <td>
                     <div class="md-form">                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select class=" form-control" name="variant" id="variant">        
+                   <select class=" form-control validate" name="variant" id="variant" required>  
+                   echo '<option value=" ">Choose Variant</option>';      
                    <!--echo '<option value=Select>Choose the brand</option>';-->
                     </select >
                     </div>
@@ -122,7 +124,8 @@ require('data/session.php');
                     <td>
                     <div class="md-form">                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select class="form-control" name="fuel" id="fuel">                  
+                   <select class="form-control validate" name="fuel" id="fuel" required>  
+                   echo '<option value=" ">Choose Fuel Type</option>';                
                     </select >
                     </div>
                     </td>
@@ -131,7 +134,7 @@ require('data/session.php');
                     <td><label>Replacing Parts</label></td>
                     <td>
                     <div class="md-form">
-                    <input type="textarea" class="form-control" name="replacing" id="replacing">                   
+                    <input type="textarea" class="form-control validate" name="replacing" id="replacing" >                   
                     </div>
                     </td>
                     </tr>
@@ -139,7 +142,7 @@ require('data/session.php');
                     <td><label>Checking Parts</label></td>
                     <td>
                     <div class="md-form">
-                    <input type="textarea" class="form-control" name="checking" id="checking">                   
+                    <input type="textarea" class="form-control validate" name="checking" id="checking"data-type="model">                   
                     </div>
                     </td>
                     </tr>
@@ -147,7 +150,7 @@ require('data/session.php');
                     <td><label>Approximate Amount</label></td>
                     <td>
                     <div class="md-form">                  
-                    <input type="text" id="amount" class="form-control validate" name="amount" >
+                    <input type="number" id="amount" class="form-control validate" name="amount" >
                     </div>  
                     </td>
                     </tr>

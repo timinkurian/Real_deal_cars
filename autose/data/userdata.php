@@ -53,11 +53,19 @@ switch($type){
         $usid=mysqli_query($conn,$sql);
         $data1 = mysqli_fetch_assoc($usid);
         $usrid = $data1['usrid'];
-        $sql1="INSERT INTO `car` (`vehno`, `usrid`, `brand`, `model`,`variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES ('$vehno','$usrid','$brand','$model','$variant','$fuel','$year','$color','$engineno','$chasisno','$path','$path1',1)";
+
+        $sql4="SELECT `*` FROM `car` WHERE `usrid`='$usrid' AND `engineno`='$engineno' AND `chasisno`='$chasisno'";
+        $count=mysqli_query($conn,$sql4);
+        if(mysqli_num_rows($count)<1){
+        $sql1="INSERT INTO `car` (`vehno`, `usrid`, `brand`, `model`,`variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES ('$vehno','$usrid','$brand','$model','$variant','$fuel','$year','$color','$engineno','$chasisno','$path','$path1','aproval Pending')";
         mysqli_query($conn,$sql1);
         move_uploaded_file($_FILES['rcbook']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['rcbook']['name']);
         move_uploaded_file($_FILES['car']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['car']['name']);
         echo "<script>alert('Car Added successfully');window.location='../user.php';</script>";
+        }
+        else{
+            echo "<script>alert('Already Exist');window.location='../user.php';</script>";
+        }
     }
 function searchCenter($conn){
     $district=$_POST['dist'];
@@ -115,7 +123,6 @@ function makeAppointment($conn){
     $date=$_POST['date'];
     $vehno=$_POST['vehno'];
     $stype=$_POST['stype'];
-    $time=$_POST['time'];
     $remarks=$_POST['remarks'];
     $logid=getSession('logid');
     $scid=getSession('scid');
@@ -141,7 +148,7 @@ function makeAppointment($conn){
             //table is empty directly into both tables
             $sql5="INSERT INTO `scount`( `date`,`scid`, `typeid`, `count`) VALUES ('$date','$scid','$typeid',1)";
             mysqli_query($conn,$sql5);
-            $sql6="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `time`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$time','$remarks','booked')";
+            $sql6="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$remarks','booked')";
             mysqli_query($conn,$sql6);
             $_SESSION['scid'] = '';
             echo "<script>alert('Added successfully');window.location='../user.php';</script>";
@@ -161,7 +168,7 @@ function makeAppointment($conn){
                 $sql7="UPDATE `scount` SET `count`='$acount'";
                 mysqli_query($conn,$sql7);
                 //inserting to appointment table
-                $sql8="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `time`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$time','$remarks','booked')";
+                $sql8="INSERT INTO `appointment`(`date`,`vehno`, `usrid`,`scid`, `stype`,`sname`, `remarks`,`status`) VALUES ('$date','$vehno','$usrid','$scid','$typeid','$stype','$remarks','booked')";
                 mysqli_query($conn,$sql8);
                 $_SESSION['scid'] = '';
                 echo "<script>alert('Added successfully');window.location='../user.php';</script>";

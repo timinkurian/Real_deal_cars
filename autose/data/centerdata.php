@@ -23,6 +23,12 @@ switch($type){
             case 'started':
             serviceStarted($conn);
             break;
+            case 'completed':
+            serviceCompleted($conn);
+            break;
+            case 'leave':
+            employeeLeave($conn);
+            break;
         default:
             break;
     }   
@@ -185,3 +191,53 @@ function serviceStarted($conn){
    // echo "<script>alert('Approved');window.location=../adminhome.php;</script>";
    echo '1';
 }
+function serviceCompleted($conn){
+    $apid=$_POST['id'];
+    $sql="UPDATE `appointment` SET `status`= 'Completed' WHERE `apid`='$apid'";
+   mysqli_query($conn, $sql);
+   // echo "<script>alert('Approved');window.location=../adminhome.php;</script>";
+   echo '2';
+}
+function employeeLeave($conn){
+    $date=$_POST['date'];
+    $stype=$_POST['stype'];
+    $empno=$_POST['empno'];
+    $val=getSession('logid');
+    $sq="SELECT `scid` FROM `servicecenter` WHERE `logid`='$val'";
+    $sci=mysqli_query($conn,$sq); 
+    $data1 = mysqli_fetch_assoc($sci);
+    $scid = $data1['scid'];
+        //fetching service type id
+        $sql2="SELECT `typeid` FROM `stypes` WHERE `sname`='$stype' AND `scid`='$scid'";
+        $tid=mysqli_query($conn,$sql2);
+        $data2 = mysqli_fetch_assoc($tid);
+        $typeid = $data2['typeid'];
+        $sql3="SELECT `maximum` FROM `stypes` WHERE `typeid`='$typeid' AND `scid`='$scid'";
+        $max=mysqli_query($conn,$sql3);
+        $data3 = mysqli_fetch_assoc($max);
+        $maxcount = $data3['maximum'];
+    $sql4="SELECT `*` FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
+    $count=mysqli_query($conn,$sql4);
+    if(mysqli_num_rows($count)<1){
+                    //table is empty directly into both tables
+                    $sql5="INSERT INTO `scount`( `date`,`scid`, `typeid`, `count`) VALUES ('$date','$scid','$typeid','$empno')";
+                    mysqli_query($conn,$sql5);
+                    echo "<script>alert('Added successfully');window.location='../leave.php';</script>";
+    }
+    else{
+        $data3 = mysqli_fetch_assoc($count);
+        $acount = $data3['count'];
+        $acount=$acount+$empno;
+        if($acount<=$maxcount){
+            
+                //not already applied and anyone is already applied for that particular service only upate is performed
+                $sql7="UPDATE `scount` SET `count`='$acount' where `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
+                mysqli_query($conn,$sql7);
+                echo "<script>alert('Added successfully');window.location='../leave.php';</script>";
+        }
+        if($acount>$maxcount) {
+            echo "<script>alert('Leave Can't be Granted');window.location='../leave.php';</script>";   
+        }
+        }
+
+    }

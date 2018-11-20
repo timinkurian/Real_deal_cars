@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 18, 2018 at 01:49 PM
+-- Generation Time: Nov 19, 2018 at 04:26 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -43,16 +43,17 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   PRIMARY KEY (`apid`),
   KEY `usrid` (`usrid`),
   KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`apid`, `date`, `vehno`, `usrid`, `scid`, `stype`, `sname`, `time`, `remarks`, `status`) VALUES
-(4, '2018-11-21', 'KL 06 J 0270', 12, 3, 1, 'First service', '8AM-9AM', 'nothing', 'booked'),
+(4, '2018-11-21', 'KL 06 J 0270', 12, 3, 1, 'First service', '8AM-9AM', 'nothing', 'Started'),
 (5, '2018-11-21', 'KL 11 J 0270', 12, 3, 1, 'First service', '10AM-11AM', 'nothing', 'booked'),
-(6, '2018-11-19', 'KL 11 J 0270', 12, 3, 1, 'First service', '9AM-10AM', 'nothing', 'booked');
+(6, '2018-11-19', 'KL 11 J 0270', 12, 3, 1, 'First service', '9AM-10AM', 'nothing', 'booked'),
+(7, '2018-11-20', 'KL 06 J 8745', 11, 4, 1, 'First Service', '9AM-10AM', 'Break issue', 'booked');
 
 -- --------------------------------------------------------
 
@@ -65,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `brandid` int(11) NOT NULL AUTO_INCREMENT,
   `brandname` varchar(25) NOT NULL,
   `model` varchar(20) NOT NULL,
-  `variant` varchar(15) NOT NULL,
+  `variant` varchar(25) NOT NULL,
   `fuel` varchar(10) NOT NULL,
   PRIMARY KEY (`brandid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brand`
@@ -78,11 +79,9 @@ INSERT INTO `brand` (`brandid`, `brandname`, `model`, `variant`, `fuel`) VALUES
 (1, 'maruti suzuki', 'alto800', 'lx', 'petrol'),
 (3, 'hyundai', 'eon', 'magna', 'petrol'),
 (4, 'maruti suzuki', 'swift', 'ldi', 'diesel'),
-(6, 'maruti suzuki', 'swift', 'lxi', 'petrol'),
 (7, 'Hyundai', 'i20', 'asta', 'petrol'),
 (10, 'Hyundai', 'i10', 'asta', 'petrol'),
-(11, 'Maruti Suzuki', 'alto800', 'vxi', 'petrol'),
-(12, 'Maruti Suzuki', 'altok10', 'lx', 'petrol');
+(20, 'Tata', 'Tiago', 'xe', 'Petrol');
 
 -- --------------------------------------------------------
 
@@ -97,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `car` (
   `usrid` int(10) NOT NULL,
   `brand` varchar(25) NOT NULL,
   `model` varchar(25) NOT NULL,
-  `variant` varchar(10) NOT NULL,
+  `variant` varchar(25) NOT NULL,
   `fuel` varchar(10) NOT NULL,
   `man_year` date NOT NULL,
   `color` varchar(20) NOT NULL,
@@ -108,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `car` (
   `status` int(2) NOT NULL,
   PRIMARY KEY (`vid`),
   KEY `usrid` (`usrid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `car`
@@ -116,7 +115,11 @@ CREATE TABLE IF NOT EXISTS `car` (
 
 INSERT INTO `car` (`vid`, `vehno`, `usrid`, `brand`, `model`, `variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES
 (3, 'KL 06 J 0270', 12, 'hyundai', 'eon', 'magna', 'petrol', '2018-10-31', 'white', 'eng12345', 'chs12345', '/upload/car/2 (3).jpg', '/upload/car/2.jpg', 1),
-(4, 'KL 11 J 0270', 12, 'hyundai', 'i20', 'asta', 'petrol', '2018-11-01', 'black', 'eng123456', 'chs123456', '/upload/car/dfg.jpg', '/upload/car/008.jpg', 1);
+(4, 'KL 11 J 0270', 12, 'hyundai', 'i20', 'asta', 'petrol', '2018-11-01', 'black', 'eng123456', 'chs123456', '/upload/car/dfg.jpg', '/upload/car/008.jpg', 1),
+(5, 'KL 06 J 8745', 11, 'maruti suzuki', 'swift', 'ldi', 'diesel', '2017-12-07', 'Red', 'engn78945', 'chsis87455', '/upload/car/cute-squirrel-wallpaper.jpg', '/upload/car/258471-hd-windows-8.jpg', 1),
+(6, 'KL 06 H 8747', 20, 'maruti suzuki', 'alto800', 'lx', 'petrol', '2018-10-31', 'Gray', 'engn78945', 'chsis87455', '/upload/car/120/2 (3).jpg', '/upload/car/120/2.jpg', 1),
+(7, 'KL 07 CK 8700', 20, 'hyundai', 'i20', 'asta', 'petrol', '2018-10-30', 'Silver', 'engn78945', 'chsis87455', '/upload/car/KL 07 CK 8700/66.jpg', '/upload/car/KL 07 CK 8700/a.jpg', 1),
+(8, 'KL 06 J 8723', 20, 'maruti suzuki', 'alto800', 'lx', 'petrol', '2018-10-29', 'white', 'engn78945', 'chsis87455', '/upload/car/KL 06 J 8723/', '/upload/car/KL 06 J 8723/', 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `district` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `district` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `district`
@@ -162,7 +165,31 @@ INSERT INTO `district` (`id`, `district`) VALUES
 (2, 'Idukki'),
 (3, 'Ernakulam'),
 (4, 'Thrishur'),
-(5, 'Thiruvananthapuram');
+(5, 'Thiruvananthapuram'),
+(6, 'Kollam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fuel`
+--
+
+DROP TABLE IF EXISTS `fuel`;
+CREATE TABLE IF NOT EXISTS `fuel` (
+  `fid` int(11) NOT NULL AUTO_INCREMENT,
+  `fuel` varchar(15) NOT NULL,
+  PRIMARY KEY (`fid`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fuel`
+--
+
+INSERT INTO `fuel` (`fid`, `fuel`) VALUES
+(1, 'Petrol'),
+(2, 'Diesel'),
+(3, 'CNG'),
+(4, 'Electric');
 
 -- --------------------------------------------------------
 
@@ -190,7 +217,7 @@ INSERT INTO `login` (`logid`, `username`, `password`, `usertype`, `status`) VALU
 (117, 'user@mail.com', 'ba5ef51294fea5cb4eadea5306f3ca3b', 'user', 1),
 (118, 'timin@mail.com', 'f4edb480cca1633e241f913c2035e5d9', 'user', 2),
 (119, 'albin@mail.com', 'b4f4a15ee4999650458e0c705ebacad9', 'user', 1),
-(120, 'tim@mail.com', '33ff20bae0a80ee0929226ee8dad931d', 'user', 2),
+(120, 'tim@mail.com', '33ff20bae0a80ee0929226ee8dad931d', 'user', 1),
 (122, 'nandhu@mail.com', 'a6235d809e3f4888bc228c7239f47105', 'user', 2),
 (145, 'joji@mail.com', '088ae11fc386d6a998da7eb3959d170e', 'user', 2),
 (149, 'alan@mail.com', '0541c626be6852ab369f571e974a7b30', 'user', 1),
@@ -216,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `scount` (
   PRIMARY KEY (`countid`),
   KEY `typeid` (`typeid`),
   KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `scount`
@@ -224,7 +251,8 @@ CREATE TABLE IF NOT EXISTS `scount` (
 
 INSERT INTO `scount` (`countid`, `date`, `scid`, `typeid`, `count`) VALUES
 (6, '2018-11-21', 3, 1, 2),
-(7, '2018-11-19', 3, 1, 1);
+(7, '2018-11-19', 3, 1, 1),
+(8, '2018-11-20', 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -303,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `stypes` (
   `maximum` int(11) NOT NULL,
   PRIMARY KEY (`typeid`),
   KEY `scid` (`scid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stypes`
@@ -334,16 +362,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `photo` varchar(100) NOT NULL,
   PRIMARY KEY (`usrid`),
   KEY `logid` (`logid`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`usrid`, `logid`, `fname`, `lname`, `email`, `mobile`, `district`, `place`, `photo`) VALUES
-(11, 117, 'user', 'user', 'user@mail.com', 9847, 'Idukki', 'aluva', '../data/upload/IMG-20180926-WA0011.jpg'),
+(11, 117, 'Jomon', 'Joseph', 'user@mail.com', 9847887455, 'Idukki', 'Kattappana', '../data/upload/IMG-20180926-WA0011.jpg'),
 (12, 149, 'Alan', 'Devasia', 'alan@mail.com', 8129365847, 'Kannur', 'Iritty', '../data/upload/3624.jpg'),
-(14, 119, 'Albin', 'Thomas', 'albin@mail.com', 8129874536, 'Kannur', 'Chempery', '/upload/110-1600.jpg');
+(14, 119, 'Albin', 'Thomas', 'albin@mail.com', 8129874536, 'Kannur', 'Chempery', '/upload/110-1600.jpg'),
+(20, 120, 'Timin', 'Kurian', 'tim@mail.com', 9847390002, 'Idukki', 'Kattappana', '/upload/120/p.jpg');
 
 --
 -- Constraints for dumped tables

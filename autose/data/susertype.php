@@ -1,7 +1,7 @@
 <?php
 require "connect.php";
 
-$sql = "SELECT * FROM `designation` WHERE `designation`='user'";
+$sql = "SELECT * FROM `designation` WHERE `designation`='servicecenter'";
 $result = mysqli_query($conn,$sql);
 if ($result->num_rows > 0) {
     // output data of each row

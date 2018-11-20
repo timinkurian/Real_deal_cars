@@ -35,7 +35,6 @@ if ($val) {
                 <th>Vehicle Number</th>
                 <th>Date</th>
                 <th>Service Type</th>
-                <th>Arrival Time</th>
                 <th>Remarks</th>
                 <th>Status</th>
                 <th></th>
@@ -68,9 +67,6 @@ if ($val) {
                 <td>
                     <?php 
                     echo $result['sname']; ?>
-                </td>
-                <td>
-                    <?php echo $result['time']; ?>
                 </td>
                 <td>
                     <?php echo $result['remarks']; ?>

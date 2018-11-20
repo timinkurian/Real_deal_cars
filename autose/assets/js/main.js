@@ -77,10 +77,13 @@ $(document).ready(function () {
                 $url = 'data/admindata.php';
                 break;
              case 'viewdistrict':
-             alert();
+             //alert();
                 $url = 'data/admindata.php';
             break;
-
+            case 'Caraprove':
+           // alert();
+               $url = 'data/aprovecar.php';
+           break;
         }
 
         $.ajax({
@@ -98,7 +101,6 @@ $(document).ready(function () {
         // e.preventDefault();
         $type = $(this).data('type');
         $id = $(this).data('id');
-        //alert(this.$type);
         $.ajax({
 
             url: 'data/admindata.php',
@@ -131,10 +133,13 @@ $(".cntr-nav").on("click", function (e) {
             $url = 'data/centerdata.php';
             break;
             case 'viewappointment':
-            //alert();
             $url = 'data/centerappointment.php';
             break;
-
+            case 'startedworks':
+            $url = 'data/startedworks.php';
+            break;
+            default:
+            break;
 
     }
 
@@ -150,10 +155,10 @@ $(".cntr-nav").on("click", function (e) {
 
 $("body").on("click", ".cntr-click", function (e) {
     // e.preventDefault();
-    alert();
+   
     $type = $(this).data('type');
     $id = $(this).data('id');
-    //alert(this.$type);
+   
     $.ajax({
 
         url: 'data/centerdata.php',
@@ -164,10 +169,10 @@ $("body").on("click", ".cntr-click", function (e) {
 
             //  $("#pageData").html(data);
             if (data == 1) {
-                $("#apmntControl" + $id).html('Started!');
+                $("#servControl" + $id).html('Started!');
             }
             if (data == 2) {
-                $("#apmntControl" + $id).html('Completed!');
+                $("#servControl" + $id).html('Completed!');
             }
         }
     });

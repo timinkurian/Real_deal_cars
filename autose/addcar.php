@@ -118,7 +118,7 @@ if(!getSession('logid'))
         <td><label>Color</label></td>
         <td>
         <div class="md-form">
-        <input type="text" class="form-control validate" name="color" id="color" >                   
+        <input type="text" class="form-control validate" name="color" id="color" data-type="name" required>                   
         </div>
         </td>
         </tr>
@@ -150,7 +150,7 @@ if(!getSession('logid'))
         <td><label>Choose RC Book</label></td>
         <td>
         <div class="md-form">                  
-        <input type="file" id="rcbook" class="form-control validate" name="rcbook" accept=".jpeg,.jpg,.png">
+        <input type="file" id="rcbook" class="form-control" name="rcbook" accept=".jpeg,.jpg,.png" required >
         <label for="form3"></label>
         </div> 
         </td>
@@ -159,7 +159,7 @@ if(!getSession('logid'))
         <td><label>Choose Car Image</label></td>
         <td>
         <div class="md-form">                  
-        <input type="file" id="car" class="form-control validate" name="car" accept=".jpeg,.jpg,.png">
+        <input type="file" id="car" class="form-control " name="car" accept=".jpeg,.jpg,.png" required>
         <label for="form3"></label>
         </div> 
         </td>

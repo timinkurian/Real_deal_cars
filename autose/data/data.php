@@ -139,8 +139,8 @@ function userLogin($conn){
         else
         {
             // echo $sql;
-            echo "<script>alert('Invalid username or password');window.location='../index.php';</1script>";
-                header("location:../index.php"); 
+            echo "<script>alert('Invalid username or password');window.location='../index.php';</script>";
+                //header("location:../index.php"); 
         }
     }
     /*else{
@@ -202,8 +202,11 @@ function centerRegistration($conn){
     $img=$_FILES['certificates']['name'];
 */
 
+    $val=getSession('logid');
+    $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
+    mkdir($sDirPath,0777,true);
     $cert=$_FILES['certificate']['name'];
-    $cert = '/upload/'.$cert;
+    $cert = '/upload/'.$val.'/'.$cert;
     $img=$_FILES['certificate']['name'];
 
 
@@ -220,8 +223,7 @@ function centerRegistration($conn){
    // print_r($sql);
     $r2=mysqli_query($conn,$sql);
     //move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/' . $_FILES['certifiacte']['name']);
-
-    move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/' . $_FILES['certificate']['name']);
+    move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/'.$val.'/' . $_FILES['certificate']['name']);
 
     $sql2="UPDATE `login` SET `status`=0 where `logid`=$val";
     mysqli_query($conn,$sql2);

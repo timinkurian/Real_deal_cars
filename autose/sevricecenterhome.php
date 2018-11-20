@@ -24,8 +24,9 @@ if(!getSession('logid'))
   </li> 
   <li><a class='prett' href='#' title='Appointment'>Appointment</a>
     <ul class='menus'>
-    <li><a href='' title='New Brand' class="cntr-nav" data-type="viewappointment">View Appointment</a></li>
-    <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
+    <li><a href='' title='View Appointments' class="cntr-nav" data-type="viewappointment">View Appointment</a></li>
+    <li><a href='' title='Started works' class="cntr-nav" data-type="startedworks">Started Works</a></li>
+    <li><a href='leave.php' title='Leave Management' data-type="leave">Leave Management</a></li>
     </ul>
   </li>
   <li><a class='menus' href="components/logout.php">Logout</a></li>

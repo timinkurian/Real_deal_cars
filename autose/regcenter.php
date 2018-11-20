@@ -1,7 +1,6 @@
 <?php 
 require('layouts/app_top');
-require('data/session.php');
-
+session_start();
 if(isset($_SESSION['logid'])){
     switch($_SESSION['utype']){
         case '1':
@@ -10,11 +9,6 @@ if(isset($_SESSION['logid'])){
         default:
             break;
     }
-}
-
-if(!getSession('logid'))
-{
-  header('Location:index.php');
 }
 ?>
 
@@ -28,7 +22,6 @@ if(!getSession('logid'))
 
       <!-- Brand -->
       <a class="navbar-brand" href="index.php">
-
         <strong>RDC</strong>
       </a>
 
@@ -40,7 +33,6 @@ if(!getSession('logid'))
 
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
         </ul>
 
       </div>
@@ -56,7 +48,6 @@ if(!getSession('logid'))
         <!--Grid row-->
         <div class="row wow fadeIn">
 
-
           <!--Grid column-->
           <div class="offset-4 col-md-4 mb-4" ">
 
@@ -70,49 +61,33 @@ if(!getSession('logid'))
                 <form name="" id="login" method="post" action="data/data.php" enctype="multipart/form-data" class="mt-5">
                   <!-- Heading -->
                   
-                  <input type="text" hidden value="userreg" name="type">
+                  <input type="text" hidden value="reguser" name="type">
                   <h3 class="dark-grey-text text-center">
-                    <strong>Profile </strong>
+                    <strong>Registration</strong>
                   </h3>
                   <hr>
 
-                  <div class="md-form">                  
-                    <input type="text" id="fname" class="form-control validate" name="fname" data-type="name" required>
-                    <label for="form3">First Name</label>
-                  </div>
-                <!--  <div class="md-form">
-                    <input type="text" id="mname" class="form-control validate" name="mname">
-                    <label for="form2">Middle Name</label>
-                  </div>-->
-                  <div class="md-form">                  
-                    <input type="text" id="lname" class="form-control validate" name="lname" data-type="name" required >
-                    <label for="form3">Last Name</label>
-                  </div>
-                 
-                  <div class="md-form">                  
-                    <input type="tel" id="mobno" class="form-control validate" name="mobno" required >
-                    <label for="form3">Mobile Number</label>
+                 <div class="md-form">                  
+                  <select name="designation" class="form-control">
+                      <?php
+                      include('data/susertype.php')
+                      ?>
+                    </select>
                   </div>
                   <div class="md-form">                  
-                   <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-                   <select name="district" class="form-control validate" required>
-                       <?php
-                        include('data/districts.php');
-                       ?>
-                    </select >
-                    <label for="form3"></label>
+                    <input type="email" id="email" class="form-control validate" name="email">
+                    <label for="form3">Email</label>
                   </div>
                   <div class="md-form">                  
-                    <input type="text" id="place" class="form-control validate" name="place" required>
-                    <label for="form3">place</label>
+                    <input type="password" id="password" class="form-control validate" name="pswd">
+                    <label for="form3">Password</label>
                   </div>
-
                   <div class="md-form">                  
-                    <input type="file" id="photo" class="form-control " name="photo" accept=".jpg,.jpeg,.png" required>
-                    <label for="form3"></label>
+                    <input type="password" id="password-confirm" class="form-control validate" name="cpswd">
+                    <label for="form3">Confirm Password</label>
                   </div>
                   <div class="text-center">
-                    <input type="submit" class="btn btn-indigo" value="Register"> 
+                    <input type="submit" class="btn btn-indigo" value="Next"> 
                     <hr>
                 <!-- <fieldset class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkbox1">

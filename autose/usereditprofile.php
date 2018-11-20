@@ -92,7 +92,7 @@ if(!getSession('logid'))
       </td>
       <td>
       <div class="md-form">                  
-        <input type="text" id="fname" class="form-control validate" name="fname" value=<?php echo $result['fname']; ?>>
+        <input type="text" id="fname" class="form-control validate" name="fname" value=<?php echo $result['fname']; ?> data-type="name" required>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>
@@ -103,7 +103,7 @@ if(!getSession('logid'))
       </td>
       <td>
       <div class="md-form">                  
-        <input type="text" id="lname" class="form-control validate" name="lname" value=<?php echo $result['lname']; ?>>
+        <input type="text" id="lname" class="form-control validate" name="lname" value=<?php echo $result['lname']; ?>  data-type="name" required>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>
@@ -113,7 +113,7 @@ if(!getSession('logid'))
       </td>
       <td>
       <div class="md-form">                  
-        <input type="tel" id="mobile" class="form-control validate" name="mobile" value=<?php echo $result['mobile']; ?>>
+        <input type="tel" id="mobile" class="form-control validate" name="mobile" value=<?php echo $result['mobile']; ?>  required>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>
@@ -123,8 +123,8 @@ if(!getSession('logid'))
       District
       </td>
       <td>
-      <div class="md-form">                  
-        <input type="text" id="district" class="form-control validate" name="district" value=<?php echo $result['district']; ?>>
+      <div class="md-form">  
+      <input type="text" id="district" class="form-control validate" name="district" value=<?php echo $result['district']; ?>  data-type="name" required>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>
@@ -135,7 +135,7 @@ if(!getSession('logid'))
       </td>
       <td>
       <div class="md-form">                  
-        <input type="text" id="place" class="form-control validate" name="place" value=<?php echo $result['place']; ?>>
+        <input type="text" id="place" class="form-control validate" name="place" value=<?php echo $result['place']; ?>  data-type="name" required>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>

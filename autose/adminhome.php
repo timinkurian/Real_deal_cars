@@ -12,7 +12,6 @@ if(!getSession('logid'))
   <!-- Navbar -->
 
  <nav>
-
   <ul id='menu'>
     <li><a class='home' href='adminhome.php'>Home</a></li>
     <li><a class='prett' href='#' title='Service center'>Service center</a>
@@ -24,6 +23,11 @@ if(!getSession('logid'))
     <li><a class='prett' href='#' title='Brand'>Brand</a>
       <ul class='menus'>
       <li><a href='adminbrand.php' title='New Brand' data-type="addbrand">New brand</a></li>
+      <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
+      </ul>
+      <li><a class='prett' href='#' title='Car'>Car</a>
+      <ul class='menus'>
+      <li><a href='' title='Approve Car' class="adm-nav" data-type="Caraprove">Aprove or Reject</a></li>
       <li><a href='#' title='List all' class="adm-nav" data-type="viewbrand">View All</a></li>
       </ul>
     </li>
