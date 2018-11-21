@@ -5,30 +5,31 @@ $sql = "SELECT * FROM `servicecenter` WHERE `logid` in (SELECT `logid` FROM `log
 $val=mysqli_query($conn,$sql);
 if ($val) {
     ?>
+
 <html>  
-
-<head>
-    <style>
-        td, th {
-                border: 1px solid black; 
-                padding: 25px;   
-            }
-            th {
-                background-color: gray;
-                color: white;
-            }
-            td img{
-                width:100px;
-                height:auto;
-            }
-        </style>
-
-</head>
-
-<body>
-    <table>
-        <thead>
-            <tr>
+        <style>
+            td, th {
+                    border: 1px solid black; 
+                    padding: 25px;   
+                }
+                th {
+                    background-color: gray;
+                    color: white;
+                }
+                td{
+                    background-color:white;
+                    color:black;
+                }
+                td img{
+                    width:100px;
+                    height:auto;
+                }
+            </style>    
+        <body>
+        <div class="py-3">
+        <table>
+            <thead>
+                <tr>
                 <th>Center Id</th>
                 <th>Center Name</th>
                 <th>Licence Number</th>
@@ -37,17 +38,16 @@ if ($val) {
                 <th>District</th>
                 <th>Place</th>
                 <th>Contact Number</th>
-                <th>Certificate</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+                <th>Certificate</th>             
+                </tr>
+            </thead>
+        <?php
             while($result=mysqli_fetch_array($val)){
 
             ?>
+        <tbody>
             <tr>
-                <td>
+            <td>
                     <?php echo $result['scid']; ?>
                 </td>
                 <td>
@@ -83,12 +83,13 @@ if ($val) {
             }
             ?>
         </tbody>
-    </table>
-</body>
 
-</html>
 <?php
    }
  else {
     echo "0 results";
-}
+}?>
+</table>
+</div>
+</body>
+</html>

@@ -55,25 +55,6 @@ function regUser($conn){
        echo"<script> alert('Registration Successful');window.location ='../index.php';</script>";
     } 
 
-            // print_r($sql1);
-       
-
-    
-
-    //print_r($res);
-   /* $s=mysqli_insert_id($conn);
-    /header("location:../registration.php?id=$s");
-    if($res1){
-        $logid = mysqli_insert_id($conn);
-        echo $logid;
-
-        setSession('r_1', true);
-        setSession('log_id', $logid);
-
-        print_r(getSession('r_1'));
-         
-    }
-*/
 }
 
 //user fns
@@ -81,11 +62,11 @@ function userLogin($conn){
     $uname = $_POST['username'];
     $password = base64_encode($_POST['password']);
 
-    $sql = "SELECT * FROM `login` WHERE username='$uname' and password = '$password' and status != 0";
+    $sql = "SELECT * FROM `login` WHERE username='$uname' and password = '$password' and status >=1";
 
     $res = mysqli_query($conn, $sql);
 
-    if($res){
+    if(mysqli_num_rows($res)>0){
         $result = mysqli_fetch_assoc($res);
 
         // print_r($result);
@@ -132,24 +113,24 @@ function userLogin($conn){
             if($status=="2"){
                 header('Location:../servicecenteradd.php');
             }
-            else{
+            else if($status=="1"){
 
             echo "<script>alert('Login Successfull');window.location='../sevricecenterhome.php';</script>";
 
             }
-        }
-
-        else
+            else
         {
             // echo $sql;
-            echo "<script>alert('Invalid username or password');window.location='../index.php';</script>";
+            echo "<script>alert('You are not an authorised user');window.location='../index.php';</script>";
                 //header("location:../index.php"); 
         }
+        }
+
+        
     }
-    /*else{
-        echo "<script>alert('Something Went Wrong! Try again.');window.location='../index.php';</1script>";
-             header("location:../index.php"); 
-    }*/
+    else{
+        echo "<script>alert('Invalid Username or Password');window.location='../index.php';</script>";
+    }
 }
 
 
@@ -162,11 +143,7 @@ function userProfile($conn){
     $place=$_POST['place'];
     //$logid=getSession('logid');
     $val=getSession('logid');
-    $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
-    mkdir($sDirPath,0777,true);
-    $path=$_FILES['photo']['name'];
-    $path = '/upload/'.$val.'/'.$path;
-    $img=$_FILES['photo']['name'];
+   
     //print_r($img);
  
 
@@ -176,12 +153,24 @@ function userProfile($conn){
     $email=$row[1];
     //print_r($email);
 
+    $sql="SELECT * FROM `user` WHERE `mobile`='$mob' ";
+    $count=mysqli_query($conn,$sql);
+    if(mysqli_num_rows($count)<1){
+        $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
+        mkdir($sDirPath,0777,true);
+        $path=$_FILES['photo']['name'];
+        $path = '/upload/'.$val.'/'.$path;
+        $img=$_FILES['photo']['name'];
     $sql= "INSERT INTO `user` (`logid`,`fname`,`lname`,`email`,`mobile`,`district`,`place`,`photo`) VALUES ('$val','$fname','$lname','$email','$mob','$dist','$place','$path')";
     $r2=mysqli_query($conn,$sql);
     move_uploaded_file($_FILES['photo']['tmp_name'],'upload/'.$val.'/'. $_FILES['photo']['name']);
     $sql2="UPDATE `login` SET `status`=1 where `logid`=$val";
     mysqli_query($conn,$sql2);
     echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
+    }
+    else{
+        echo "<script>alert('Check the data you provided');window.location='../registration.php';</script>";
+    }
     /* if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
     } else {
@@ -200,37 +189,34 @@ function centerRegistration($conn){
     $mob=$_POST['mobno'];
     $dist=$_POST['district'];
     $place=$_POST['place'];
-   /* $cert=$_FILES['certificates']['name'];
-    $cert = '../certificate/'.$cert;
-    $img=$_FILES['certificates']['name'];
-*/
-
     $val=getSession('logid');
-    $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
-    mkdir($sDirPath,0777,true);
-    $cert=$_FILES['certificate']['name'];
-    $cert = '/upload/'.$val.'/'.$cert;
-    $img=$_FILES['certificate']['name'];
-
-
-
-    $val=getSession('logid');
-
     $z="select * from login where logid='$val'";
     $r1=mysqli_query($conn,$z);
     $row=mysqli_fetch_array($r1);
     $email=$row[1];
     //print_r($email);
+        $sql="SELECT * FROM `servicecenter` WHERE  `licenceno`='$licno' OR `mobile`='$mob' ";
+        $count=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($count)<1){
+            $sDirPath = 'upload/'.$val.'/'; //Specified Pathname
+            mkdir($sDirPath,0777,true);
+            $cert=$_FILES['certificate']['name'];
+            $cert = '/upload/'.$val.'/'.$cert;
+            $img=$_FILES['certificate']['name'];
 
-    $sql= "INSERT INTO `servicecenter`(`logid`, `centername`, `licenceno`, `type`, `brand`, `district`, `place`, `certificate`, `mobile`) VALUES ('$val','$cname','$licno','$type','$brand','$dist','$place','$cert','$mob')";
-   // print_r($sql);
-    $r2=mysqli_query($conn,$sql);
-    //move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/' . $_FILES['certifiacte']['name']);
-    move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/'.$val.'/' . $_FILES['certificate']['name']);
+            $sql= "INSERT INTO `servicecenter`(`logid`, `centername`, `licenceno`, `type`, `brand`, `district`, `place`, `certificate`, `mobile`) VALUES ('$val','$cname','$licno','$type','$brand','$dist','$place','$cert','$mob')";
+        // print_r($sql);
+            $r2=mysqli_query($conn,$sql);
+             move_uploaded_file($_FILES['certificate']['tmp_name'],'upload/'.$val.'/' . $_FILES['certificate']['name']);
+     
+            $sql2="UPDATE `login` SET `status`=0 where `logid`=$val";
+             mysqli_query($conn,$sql2);
+            echo "<script>alert('Updated successfully...!! Wait for Approvel');window.location='../index.php';</script>";
+    }
+    else{
+        echo "<script>alert('Check Your Data!');window.location='../index.php';</script>";
+    }
 
-    $sql2="UPDATE `login` SET `status`=0 where `logid`=$val";
-    mysqli_query($conn,$sql2);
-    echo "<script>alert('Updated successfully...!! Wait for Approvel');window.location='../index.php';</script>";
     /* if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
     } else {

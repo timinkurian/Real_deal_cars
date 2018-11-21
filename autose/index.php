@@ -135,12 +135,12 @@ if(!getSession('logid')){
 
                   <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="email" id="form3" class="form-control validate" name="username">
+                    <input type="email" id="form3" class="form-control" name="username">
                     <label for="form3">user name</label>
                   </div>
                   <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="password" id="form2" class="form-control validate" name="password">
+                    <input type="password" id="form2" class="form-control" name="password">
                     <label for="form2">Password</label>
                   </div>
 

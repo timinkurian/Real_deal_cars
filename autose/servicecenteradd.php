@@ -66,7 +66,7 @@ if(isset($_SESSION['logid'])){
                     <label for="form3">Center name</label>
                   </div>
                   <div class="md-form">
-                    <input type="text" id="licno" class="form-control validate" name="licno" data-type="digits" maxlength=4 >
+                    <input type="text" id="licno" class="form-control validate" name="licno" data-type="lic" maxlength=4 >
                     <label for="form2">Licence number</label>
                   </div>
                   <div class="md-form">                  

@@ -18,6 +18,10 @@ if ($val) {
                 background-color: gray;
                 color: white;
             }
+            td{
+                    background-color:white;
+                    color:black;
+                }
             td img{
                 width:100px;
                 height:auto;
@@ -74,10 +78,16 @@ if ($val) {
                 <td>
                     <?php echo $result['status']; ?>
                 </td>
+                <?php
+                    if($result['status']=='booked'){
+
+                ?>
                 <td id="servControl<?php echo $result['apid']; ?>"> 
                     <input type="button" class="btn btn-indigo usr-click" data-type="apmntcancel" data-id= <?php echo $result['apid']; ?> value="Cancel">
                 </td>
-
+                <?php
+                }
+                ?>
             </tr>
                 <?php
             }

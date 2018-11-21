@@ -22,6 +22,10 @@ if ($val) {
                 width:100px;
                 height:auto;
             }
+            td {
+                background-color: white;
+                color: black;
+            }
         </style>
 
 </head>

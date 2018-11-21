@@ -50,13 +50,14 @@ function inputValidate($value, $type, $optional, $class) {
     }
     //regex set for validation
     var pattern;
-    $telPattern = /(7|8|9)\d{8}$/
+    $telPattern = /(7|8|9|1|6)\d{8}$/;
     $numberPattern = /^([0-9])?$/;
-    $textPattern = /^([A-Za-z])$/;
+    $licPattern = /\d{4}$/;
+    $textPattern = /([A-Za-z])$/;
     $modelPattern = /[A-Za-z0-9]$/;
     $enginePattern=/[A-Z]{1}[0-9]{1}[A-Z]{2}[0-9]{7}/;
     $chasisPattern=/[A-Z]{2}[0-9]{1}[A-Z]{3}[0-9]{2}[A-Z]{1}[0-9]{8}[A-Z]{2}/;
-    $namePattern =  /([a-zA-Z]){3}$/ 
+    $namePattern =  /([a-zA-Z])$/;
     $pswdPattern = /[\@]{1}/;
     $emailPattern = /\@{1}.{1}/;
     $namePattern = /[A-Za-z]/;
@@ -75,7 +76,7 @@ function inputValidate($value, $type, $optional, $class) {
         case "text":
             
             if ($class == "name") {
-                pattern = $namePattern;
+                pattern = $textPattern;
                 $message = "Should contain letters only."
             }
             if ($class == "model") {
@@ -98,14 +99,19 @@ function inputValidate($value, $type, $optional, $class) {
                 pattern = $numberPattern;
                 $message = "Should contain numbers only."
             }
+            if ($class == "lic") {
+                pattern = $licPattern;
+                $message = "Should contain numbers only."
+            }
             //else{
              //   pattern = $textPattern;
             //}
             break;
         case "password":
-            pattern = $pswdPattern;
-            $message = "min. 6 characters, atleast 1 special character /"
+                pattern = $pswdPattern;
+                $message = "min. 6 characters, atleast 1 special character /"
             break;
+
         case "date":
             $value = formatDate($value);
             pattern = $datePattern;

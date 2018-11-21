@@ -22,6 +22,10 @@ if ($val) {
                 width:100px;
                 height:auto;
             }
+            td{
+                    background-color:white;
+                    color:black;
+                }
         </style>
 
 </head>
@@ -31,12 +35,12 @@ if ($val) {
 <div>
 <form class="float-right py-3 px-5 mx-3">
 Find service center near you
-<select name="district" id="district">
+<select name="district" id="district" required>
     <?php
         include('districts.php');
     ?>
 </select >
-<select name="brand" id="brand">
+<select name="brand" id="brand" required>
     <?php
         include('brand.php');
     ?>

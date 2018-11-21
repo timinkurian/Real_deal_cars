@@ -5,33 +5,42 @@ $sql = "SELECT * FROM `car` WHERE `status`='aproval pending'";
 $val=mysqli_query($conn,$sql);
 if ($val) {
     ?>
-<html>
+<html>  
 
 <head>
+
     <style>
         td, th {
                 border: 1px solid black; 
-                padding: 25px;   
+                padding: 15px;   
             }
             th {
                 background-color: gray;
                 color: white;
             }
+            td {
+                background-color: white;
+                color: black;
+            }
             td img{
                 width:100px;
                 height:auto;
             }
+            td{
+                    background-color:white;
+                    color:black;
+                }
         </style>
 
 </head>
 
 <body>
-<div class="mt-2 py-3">
-<form class="float-left py-3 px-5 mx-3">
+<div class="mt-4 py-3">
+
     <table width="100%">
         <thead>
             <tr>
-                <th>Registration No</th>
+            <th>Registration No</th>
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Variant</th>
@@ -43,13 +52,13 @@ if ($val) {
                 <th></th>
             </tr>
         </thead>
-        <tbody  id="tbbody">
+        <tbody id="tbbody">
             <?php
             while($result=mysqli_fetch_array($val)){
 
             ?>
             <tr>
-                <td>
+            <td>
                     <?php echo $result['vehno']; ?>
                 </td>
                 <td>
@@ -86,13 +95,13 @@ if ($val) {
                     <input type="button" class="btn btn-indigo adm-click" data-type="carapprove" data-id= <?php echo $result['vid']; ?> value="Approve">
                     <input type="button" class="btn btn-indigo adm-click" data-type="carreject" data-id= <?php echo $result['vid']; ?> value="Reject">
                 </td>
+
             </tr>
                 <?php
             }
             ?>
         </tbody>
     </table>
-    </form>
     </div>
 </body>
 

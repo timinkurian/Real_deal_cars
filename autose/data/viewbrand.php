@@ -21,6 +21,10 @@ if ($val) {
                 width:100px;
                 height:auto;
             }
+            td{
+                    background-color:white;
+                    color:black;
+                }
         </style>
 
 </head>
@@ -30,12 +34,13 @@ if ($val) {
 <div>
 <form class="float-right py-3 px-5 mx-3">
 Find the car
-<select name="brand"  id="brand" required>
+<select name="brand"  id="brand" >
+
     <?php
         include('brand.php');
     ?>
 </select >
-<select name="model" id="model" required>
+<select name="model" id="model" >
 </select >
 <input type="button" class="admn-click" data-type="searchcar" data-id="brand model" value="Search">
 </form>

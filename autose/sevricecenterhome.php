@@ -19,7 +19,7 @@ if(!getSession('logid'))
     <ul class='menus'>
     <li><a href='addservicetypes.php' title='stypes'  data-type="stypes" >Add Service Types</a></li>
     <li><a href='Addservicescheme.php' title='schemes'  data-type="schemes" >Add Schemes</a></li>
-      <li><a href='' title='view schemes' class="cntr-nav" data-type="viewschemes">View Schemes</a></li>
+      <li><a href='' title='schemes' class="cntr-nav" data-type="viewschemes">View Schemes</a></li>
     </ul>
   </li> 
   <li><a class='prett' href='#' title='Appointment'>Appointment</a>
@@ -33,24 +33,24 @@ if(!getSession('logid'))
 
 </ul>
 </nav>
-  
+
   <!-- Full Page Intro -->
   <div  id="pageData"  class="view full-page-intro">
-
+  <h4 align="center">
+                Welcome! 
+              </h4>
     <!-- Mask & flexbox options-->
     <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
-      <div class="container">
+      <div class="container-fluid">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div  class="col-md-12">
-              <h4>
-                  Welcome! User
-              </h4>
+          <div  class="col-md-8">
+
           </div>
           <!--Grid column-->
 
@@ -67,7 +67,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/specialapp_end');
+    require('layouts/app_end');
  ?>
 </body>
 

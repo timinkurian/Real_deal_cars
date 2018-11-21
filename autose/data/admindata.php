@@ -17,14 +17,8 @@ switch($type){
         case 'reject':
             rejectCenter($conn);
         break;
-        case 'viewuser':
-            viewUser($conn);
-        break;
         case 'district':
             districtAdd($conn);
-        break;
-        case 'viewdistrict':
-            viewDistrict($conn);
         break;
         case 'carapprove':
             carAprove($conn);
@@ -99,155 +93,17 @@ function districtAdd($conn){//adding district
     echo "<script>alert('Already Exists!');window.location='../districtadd.php';</script>";
    }
 }
-function viewDistrict($conn){
-    ?>
-    <html>  
-    <style>
-        td, th {
-                border: 1px solid black; 
-                padding: 25px;   
-            }
-            th {
-                background-color: gray;
-                color: white;
-            }
-            td img{
-                width:100px;
-                height:auto;
-            }
-        </style>    
-    <body>
-    <div class="mt-20 py-3">
-    <table>
-        <thead>
-            <tr>
-                <th>District</th>            
-            </tr>
-        </thead>
-        <?php
-    $sql="SELECT * FROM `district`";
-    $res=mysqli_query($conn,$sql);
-    if ($res) {
-        ?>
 
-        <tbody>
-            <?php
-            while($result=mysqli_fetch_array($res)){
-            ?>
-            <tr>
-                <td>
-                    <?php echo $result['district']; ?>
-                </td>
-
-            </tr>
-                <?php
-            }
-            ?>
-        </tbody>
-
-<?php
-   }
- else {
-    echo "0 results";
-}?>
-</table>
-</div>
-</body>
-
-</html>
-<?php
-    }
-function viewUser($conn){
-    ?>
-    <html>  
-    <style>
-        td, th {
-                border: 1px solid black; 
-                padding: 25px;   
-            }
-            th {
-                background-color: gray;
-                color: white;
-            }
-            td img{
-                width:100px;
-                height:auto;
-            }
-        </style>    
-    <body>
-    <table>
-        <thead>
-            <tr>
-                <th>User Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>District</th>
-                <th>Place</th>
-                <th>Profile Photo</th>              
-            </tr>
-        </thead>
-        <?php
-    $sql="SELECT * FROM `user`";
-    $res=mysqli_query($conn,$sql);
-    if ($res) {
-        ?>
-
-        <tbody>
-            <?php
-            while($result=mysqli_fetch_array($res)){
-            ?>
-            <tr>
-                <td>
-                    <?php echo $result['usrid']; ?>
-                </td>
-                <td>
-                    <?php echo $result['fname']; ?>
-                </td>
-                <td>
-                    <?php echo $result['lname']; ?>
-                </td>
-                <td>
-                    <?php echo $result['email']; ?>
-                </td>
-                <td>
-                    <?php echo $result['mobile']; ?>
-                </td>
-                <td>
-                    <?php echo $result['district']; ?>
-                </td>
-                <td>
-                    <?php echo $result['place']; ?>
-                </td>
-                <td>
-                   
-                   <a href="data/<?php echo $result['photo']; ?>" target="_blank">
-                   <img src="data/<?php echo $result['photo']; ?>">
-           </a>
-               </td>
-
-            </tr>
-                <?php
-            }
-            ?>
-        </tbody>
-
-<?php
-   }
- else {
-    echo "0 results";
-}?>
-</table>
-</body>
-
-</html>
-<?php
-    }
     function searchCar($conn){
         $brand=$_POST['brand'];
         $model=$_POST['model'];
-        $sql="SELECT * FROM `brand` WHERE `brandname`='$brand' AND `model`='$model'";
+        if($model=" "){
+           $sql="SELECT * FROM `brand` WHERE `brandname`='$brand'";
+        }
+        else{
+            $sql="SELECT * FROM `brand` WHERE `brandname`='$brand' AND `model`='$model'";
+        }
+       
         //die();
         $val=mysqli_query($conn,$sql);
         if ($val) {

@@ -19,6 +19,10 @@ if ($val) {
                 background-color: gray;
                 color: white;
             }
+            td{
+                    background-color:white;
+                    color:black;
+                }
             td img{
                 width:100px;
                 height:auto;

@@ -40,13 +40,13 @@ if(!getSession('logid'))
 </nav>
 
   <!-- Full Page Intro -->
-  <div  id="pageData"  class="view full-page-intro">
+  <div  id="pageData"  class="view full-page-intro" >
 
     <!-- Mask & flexbox options-->
     <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
-      <div class="container">
+      <div class="container-fluid">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
@@ -72,7 +72,7 @@ if(!getSession('logid'))
   <!-- Full Page Intro -->
 
  <?php
-    require('layouts/specialapp_end');
+    require('layouts/app_end');
  ?>
 </body>
 

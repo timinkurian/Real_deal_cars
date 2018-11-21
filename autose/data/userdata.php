@@ -43,18 +43,11 @@ switch($type){
         $variant=$_POST['variant'];
         $fuel=$_POST['fuel'];
         $color=$_POST['color'];
-        $year=$_POST['year'];
+        $year=$_POST['datepicker'];
         $engineno=$_POST['engineno'];
         $chasisno=$_POST['chasisno'];
         $val=getSession('logid');
-        $sDirPath = 'upload/car/'.$vehno.'/'; //Specified Pathname
-        mkdir($sDirPath,0777,true);
-        $path=$_FILES['rcbook']['name'];
-        $path = '/upload/car/'.$vehno.'/'.$path;
-        $img=$_FILES['rcbook']['name'];
-        $path1=$_FILES['car']['name'];
-        $path1 = '/upload/car/'.$vehno.'/'.$path1;
-        $img1=$_FILES['car']['name'];
+
 
         $sql="SELECT `usrid` FROM `user` WHERE `logid`='$val'";
         $usid=mysqli_query($conn,$sql);
@@ -64,11 +57,26 @@ switch($type){
         $sql4="SELECT * FROM `car` WHERE `usrid`='$usrid' AND `engineno`='$engineno' AND `chasisno`='$chasisno'";
         $count=mysqli_query($conn,$sql4);
         if(mysqli_num_rows($count)<1){
+            $sql5="SELECT * FROM `car` WHERE `vehno`='$vehno' OR `engineno`='$engineno' OR `chasisno`='$chasisno'";
+            $coun=mysqli_query($conn,$sql5);
+            if(mysqli_num_rows($coun)<1){
+                $sDirPath = 'upload/car/'.$vehno.'/'; //Specified Pathname
+                mkdir($sDirPath,0777,true);
+                $path=$_FILES['rcbook']['name'];
+                $path = '/upload/car/'.$vehno.'/'.$path;
+                $img=$_FILES['rcbook']['name'];
+                $path1=$_FILES['car']['name'];
+                $path1 = '/upload/car/'.$vehno.'/'.$path1;
+                $img1=$_FILES['car']['name'];
         $sql1="INSERT INTO `car` (`vehno`, `usrid`, `brand`, `model`,`variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES ('$vehno','$usrid','$brand','$model','$variant','$fuel','$year','$color','$engineno','$chasisno','$path','$path1','aproval Pending')";
         mysqli_query($conn,$sql1);
         move_uploaded_file($_FILES['rcbook']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['rcbook']['name']);
         move_uploaded_file($_FILES['car']['tmp_name'],'upload/car/'.$vehno.'/' . $_FILES['car']['name']);
         echo "<script>alert('Car Added successfully');window.location='../user.php';</script>";
+            }
+            else{
+                echo "<script>alert('Enter only valid datas');window.location='../user.php';</script>";
+            }
         }
         else{
             echo "<script>alert('Already Exist');window.location='../user.php';</script>";
@@ -127,7 +135,7 @@ function searchCenter($conn){
 <?php
 }
 function makeAppointment($conn){
-    $date=$_POST['date'];
+    $date=$_POST['datepicker'];
     $vehno=$_POST['vehno'];
     $stype=$_POST['stype'];
     $remarks=$_POST['remarks'];
@@ -182,7 +190,7 @@ function makeAppointment($conn){
                 echo "<script>alert('Added successfully');window.location='../user.php';</script>";
             }
             else{
-                echo "<script>alert('Sorry!! You are already made an appointment');window.location='../user.php';</script>";
+                echo "<script>alert('Sorry!! You already made an appointment');window.location='../user.php';</script>";
             }   
         }
         else{
@@ -197,9 +205,16 @@ function profileUpdate($conn){
     $dist=$_POST['district'];
     $place=$_POST['place'];
     $logid=getSession('logid');
+    $sql="SELECT * FROM `user` WHERE `mobile`='$mob' AND `logid`!='$logid'";
+    $count=mysqli_query($conn,$sql);
+    if(mysqli_num_rows($count)<1){
     $sql="UPDATE `user` SET `fname`='$fname',`lname`='$lname',`mobile`='$mob',`district`='$dist',`place`='$place' WHERE `logid`='$logid'";
     mysqli_query($conn,$sql);
     echo "<script>alert('Profile updated successfully');window.location='../user.php';</script>";
+    }
+    else{
+        echo "<script>alert('The mobile number is already in use');window.location='../usereditprofile.php';</script>";
+    }
 }
 function changePassword($conn){
     $paswd=base64_encode($_POST['pswd']);

@@ -10,7 +10,7 @@ if(!getSession('logid'))
 <body>
 
   <!-- Navbar -->
-  <nav>
+  <nav >
 
 <ul id='menu'>
   <li><a class='home' href='sevricecenterhome.php'>Home</a></li>
@@ -52,7 +52,7 @@ if(!getSession('logid'))
       <td>Pick a Date</label></td>
       <td>
       <div class="md-form">                
-       <input type="date" id="form3" class="form-control " name="date" required>
+      <input type="text" id="datepicker" class="form-control " name="datepicker" required>
 
         </div>
      </td>

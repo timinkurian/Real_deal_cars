@@ -49,21 +49,21 @@ if(!getSession('logid'))
 
 
   <!-- Full Page Intro -->
-  <div class="view full-page-intro">
+  <div id="pageData" class="view full-page-intro" >
 
     <!-- Mask & flexbox options-->
     <div class="mask d-flex justify-content-center align-items-center">
 
       <!-- Content -->
-      <div class="container">
+      <div class="container-fluid">
 
         <!--Grid row-->
         <div class="row wow fadeIn">
 
           <!--Grid column-->
           <div id="pageData" class="col-md-12">
-              <h4>
-                  Welcome! Admin
+              <h4 >
+              Welcome! Admin
               </h4>
           </div>
           <!--Grid column-->

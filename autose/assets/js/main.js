@@ -74,11 +74,11 @@ $(document).ready(function () {
                 // alert();
                 break;
             case 'viewuser':
-                $url = 'data/admindata.php';
+                $url = 'data/viewuser.php';
                 break;
-             case 'viewdistrict':
+            case 'viewdistrict':
              //alert();
-                $url = 'data/admindata.php';
+                $url = 'data/districtview.php';
             break;
             case 'Caraprove':
            // alert();
