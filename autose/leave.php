@@ -52,7 +52,7 @@ if(!getSession('logid'))
       <td>Pick a Date</label></td>
       <td>
       <div class="md-form">                
-       <input type="date" id="form3" class="form-control " name="date">
+       <input type="date" id="form3" class="form-control " name="date" required>
 
         </div>
      </td>
@@ -62,7 +62,7 @@ if(!getSession('logid'))
         <td>
         <div class="md-form">                  
        <!--<input type="" id="form3" class="form-control" name="fanme"> -->
-       <select class="form-control validate" name="stype" id="stype">
+       <select class="form-control validate" name="stype" id="stype" required>
           <?php
           include('data/centerstypes.php');
           ?>
@@ -74,7 +74,7 @@ if(!getSession('logid'))
       <td>No of Employees Leave</label></td>
       <td>
       <div class="md-form">                  
-        <input type="number" id="empno" class="form-control validate" name="empno" ></td>
+        <input type="number" id="empno" class="form-control validate" name="empno" required ></td>
       <!--  <label for="form3">Service Name</label>-->
      </div>
      </td>

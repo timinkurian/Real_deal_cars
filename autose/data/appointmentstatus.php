@@ -76,7 +76,6 @@ if ($val) {
                 </td>
                 <td id="servControl<?php echo $result['apid']; ?>"> 
                     <input type="button" class="btn btn-indigo usr-click" data-type="apmntcancel" data-id= <?php echo $result['apid']; ?> value="Cancel">
-                    <input type="button" class="btn btn-indigo usr-click" data-type="apmntedit" data-id= <?php echo $result['apid']; ?> value="Edit">
                 </td>
 
             </tr>

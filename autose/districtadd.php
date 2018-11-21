@@ -42,7 +42,7 @@ if(isset($_SESSION['logid'])){
               <div class="card-body">
 
                 <!-- Form -->
-                <form name="" id="district" method="post" action="data/admindata.php" class="mt-5">
+                <form name="" id="login" method="post" action="data/admindata.php" class="mt-5">
                   <!-- Heading -->
                   
                   <input type="text" hidden value="district" name="type">
@@ -50,12 +50,10 @@ if(isset($_SESSION['logid'])){
                     <strong>Add District</strong>
                   </h3>
                   <hr>
-
                   <div class="md-form">                  
-                    <input type="text" id="form3" class="form-control validate" name="dname" data-type="name">
+                    <input type="text" id="dname" class="form-control validate" name="dname" data-type="name" >
                     <label for="form3">District Name</label>
                   </div>
- 
                   <div class="text-center">
                     <input type="submit" class="btn btn-indigo" value="ADD"> 
                     <hr>

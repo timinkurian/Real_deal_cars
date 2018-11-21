@@ -20,7 +20,7 @@ if(!getSession('logid')){
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="index.php" target="_blank">
+      <a class="navbar-brand" href="index.php">
         <strong>RDC</strong>
       </a>
 
@@ -36,12 +36,12 @@ if(!getSession('logid')){
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
 
-          <li class="nav-item">
+        <!--  <li class="nav-item">
             <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About RDC</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Gallery</a>
-          </li>
+          </li>-->
           <!--
           <li class="nav-item">
             <a class="nav-link" href=servicecenteradd.php target="_blank">Register your service center</a>

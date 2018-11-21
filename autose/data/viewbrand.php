@@ -1,12 +1,13 @@
 <?php
 require "connect.php";
 $sql="SELECT * FROM `brand` ";
-    $val=mysqli_query($conn,$sql);
+$val=mysqli_query($conn,$sql);
 if ($val) {
     ?>
-<html>
+<html>  
 
 <head>
+
     <style>
         td, th {
                 border: 1px solid black; 
@@ -25,25 +26,36 @@ if ($val) {
 </head>
 
 <body>
-
 <div class="mt-4 py-3">
-    <table>
+<div>
+<form class="float-right py-3 px-5 mx-3">
+Find the car
+<select name="brand"  id="brand" required>
+    <?php
+        include('brand.php');
+    ?>
+</select >
+<select name="model" id="model" required>
+</select >
+<input type="button" class="admn-click" data-type="searchcar" data-id="brand model" value="Search">
+</form>
+</div>
+    <table width="100%">
         <thead>
             <tr>
-                <th>Brand Name</th>
+            <th>Brand Name</th>
                 <th>Model</th>
                 <th>Variant</th>
                 <th>Fuel Type</th>
-                
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbbody">
             <?php
             while($result=mysqli_fetch_array($val)){
 
             ?>
             <tr>
-                <td>
+            <td>
                     <?php echo $result['brandname']; ?>
                 </td>
                 <td>
@@ -55,20 +67,22 @@ if ($val) {
                 <td>
                     <?php echo $result['fuel']; ?>
                 </td>
+
             </tr>
-            <?php
+                <?php
             }
             ?>
         </tbody>
     </table>
     </div>
+    <?php
+require('../layouts/specialapp_end');
+?>
+</body>
 
+</html>
 <?php
    }
  else {
     echo "0 results";
 }
-?>
-</body>
-</div>
-</html>

@@ -22,7 +22,7 @@ if(isset($_SESSION['logid'])){
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="components/logout.php">
         <strong>RDC</strong>
       </a>
 

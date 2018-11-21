@@ -126,6 +126,27 @@ $(document).ready(function () {
 
 });
 
+$("body").on("click", ".admn-click", function (e) {
+    // e.preventDefault();
+    $brand = $("body #brand").val();
+    $model = $("body #model").val();
+    $type = $(this).data('type');
+    //$id=$(this).data('id');
+    //alert($type);
+    $.ajax({
+
+        url: 'data/admindata.php',
+        method: 'post',
+        data: { 'type': $type, 'brand': $brand, 'model': $model },
+        success: function (data) {
+            console.log(data);
+            //  $("#pageData").html(data);          
+            $("body #tbbody").html(data);
+        }
+    
+     });
+ });
+
 
 $(".cntr-nav").on("click", function (e) {
     //alert();

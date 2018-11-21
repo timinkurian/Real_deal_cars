@@ -62,7 +62,7 @@ setSession('scid',$scid);
       <td>Pick a Date</label></td>
       <td>
       <div class="md-form">                
-       <input type="date" id="form3" class="form-control " name="date">
+       <input type="date" id="form3" class="form-control " name="date" required>
 
         </div>
      </td>

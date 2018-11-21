@@ -58,11 +58,18 @@ switch($type){
     $sc = $data1['scid'];
    // echo $sq;
    // die();
+   $sql2 = "SELECT * FROM `servicescheme` WHERE `typeid`='$typeid' AND `stype`='$stype' AND `brand`='$brand' AND `model`='$model' AND `variant`='$variant' AND `scid`='$sc'";
+   $res = mysqli_query($conn, $sql2);
+   if(mysqli_num_rows($res)>0){
+       echo"<script> alert('Already exist');window.location ='../Addservicescheme.php';</script>";
+   }
+   else{
    $sql1="INSERT INTO `servicescheme`(`stype`,`scid`,`typeid`,`brand`,`model`,`variant`,`fuel`,`replaced`,`checked`,`amount`) VALUES ('$stype','$sc','$typeid','$brand','$model','$variant','$fuel','$replacing','$checking','$amount')";
        //die();
     mysqli_query($conn,$sql1);
     echo "<script>alert('Added Successfully');window.location='../Addservicescheme.php';</script>";
-    }
+   }
+}
 
 
     function viewSchemes($conn){

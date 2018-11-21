@@ -42,7 +42,6 @@ if(!getSession('logid'))
       <li><a href='' title='New Brand' class="adm-nav" data-type="viewuser">View Users</a></li>
       </ul>
     </li>
-
     <li><a class='menus' href="components/logout.php">Logout</a></li>
  
   </ul>

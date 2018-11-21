@@ -172,7 +172,7 @@ function makeAppointment($conn){
             if(mysqli_num_rows($count1)<1){
                 $acount=$acount+1;
                 //not already applied and anyone is already applied for that particular service only upate is performed
-                 $sql7="UPDATE `scount` SET `count`='$acount'";
+                 $sql7="UPDATE `scount` SET `count`='$acount' WHERE `date`='$date' AND `scid`='$scid' AND `typeid`='$typeid'";
                 
                 mysqli_query($conn,$sql7);
                 //inserting to appointment table
@@ -220,10 +220,11 @@ function appointmentCancel($conn){
     $sql5="SELECT `count` FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
     $count=mysqli_query($conn,$sql5);
     $data1 = mysqli_fetch_assoc($count);
-    $coun =$data1['count'];
-    $newc=$coun-1;
-    $sql1="UPDATE `scount` SET `count`='$newc'";
-    $sql="DELETE * FROM `appointment` WHERE `apid`='$apid' ";
+    $acount =$data1['count'];
+    $acount=$acount-1;
+    $sql7="UPDATE `scount` SET `count`='$acount' WHERE `date`='$date' AND `scid`='$scid' AND `typeid`='$typeid'";    
+    mysqli_query($conn,$sql7);
+    $sql="DELETE  FROM `appointment` WHERE `apid`='$apid' ";
     mysqli_query($conn,$sql);
     echo '1';
    

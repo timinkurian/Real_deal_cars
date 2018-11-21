@@ -150,7 +150,7 @@ require('data/session.php');
                     <td><label>Approximate Amount</label></td>
                     <td>
                     <div class="md-form">                  
-                    <input type="text" id="amount" class="form-control validate" name="amount" data-type="digits" >
+                    <input type="text" id="amount" class="form-control validate" name="amount" data-type="model" >
                     </div>  
                     </td>
                     </tr>
