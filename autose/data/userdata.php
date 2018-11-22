@@ -239,7 +239,7 @@ function appointmentCancel($conn){
     $acount=$acount-1;
     $sql7="UPDATE `scount` SET `count`='$acount' WHERE `date`='$date' AND `scid`='$scid' AND `typeid`='$typeid'";    
     mysqli_query($conn,$sql7);
-    $sql="DELETE  FROM `appointment` WHERE `apid`='$apid' ";
+    $sql="UPDATE `appointment` SET `status`='cancelled' WHERE `apid`='$apid' ";
     mysqli_query($conn,$sql);
     echo '1';
    

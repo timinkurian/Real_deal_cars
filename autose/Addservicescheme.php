@@ -88,7 +88,7 @@ require('data/session.php');
                  <div class="md-form">                  
                    <!--<input type="" id="form3" class="form-control" name="fanme"> -->
                    <select class="form-control validate" name="brand" id="brand" required>
-                   echo '<option value=" ">Choose brand</option>';
+                   <!--echo '<option value=" ">Choose brand</option>';-->
                        <?php
                         include('data/servicebrand.php');
                        ?>
@@ -134,7 +134,7 @@ require('data/session.php');
                     <td><label>Replacing Parts</label></td>
                     <td>
                     <div class="md-form">
-                    <input type="textarea" class="form-control validate" name="replacing" id="replacing" >                   
+                    <input type="textarea" class="form-control " name="replacing" id="replacing" required>                   
                     </div>
                     </td>
                     </tr>
@@ -142,7 +142,7 @@ require('data/session.php');
                     <td><label>Checking Parts</label></td>
                     <td>
                     <div class="md-form">
-                    <input type="textarea" class="form-control validate" name="checking" id="checking">                   
+                    <input type="textarea" class="form-control" name="checking" id="checking" required>                   
                     </div>
                     </td>
                     </tr>

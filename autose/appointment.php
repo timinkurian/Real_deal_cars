@@ -97,7 +97,7 @@ setSession('scid',$scid);
         <td><label>Remarks</label></td>
         <td>
         <div class="md-form">
-        <input type="textarea" class="form-control validate" name="remarks" id="remarks" data-type="model" required>                   
+        <input type="textarea" class="form-control" name="remarks" id="remarks" required>                   
         </div>
         </td>
         </tr>

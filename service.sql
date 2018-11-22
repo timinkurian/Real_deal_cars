@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2018 at 06:37 PM
+-- Generation Time: Nov 22, 2018 at 02:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointment` (
   `apid` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(12) NOT NULL,
   `vehno` varchar(15) NOT NULL,
   `usrid` int(11) NOT NULL,
   `scid` int(11) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`apid`, `date`, `vehno`, `usrid`, `scid`, `stype`, `sname`, `remarks`, `status`) VALUES
-(5, '2018-11-21', 'KL 06 H 3595', 24, 6, 6, 'First service', 'Nil', 'booked');
+(22, '11/22/2018', 'KL 06 H 3595', 24, 6, 6, 'First service', 'Nil', 'cancelled');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `car` (
   `model` varchar(25) NOT NULL,
   `variant` varchar(25) NOT NULL,
   `fuel` varchar(10) NOT NULL,
-  `man_year` date NOT NULL,
+  `man_year` varchar(12) NOT NULL,
   `color` varchar(20) NOT NULL,
   `engineno` varchar(30) NOT NULL,
   `chasisno` varchar(30) NOT NULL,
@@ -101,7 +101,8 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`vid`, `vehno`, `usrid`, `brand`, `model`, `variant`, `fuel`, `man_year`, `color`, `engineno`, `chasisno`, `rcbook`, `image`, `status`) VALUES
-(2, 'KL 06 H 3595', 24, 'maruti suzuki', 'alto800', 'lx', 'petrol', '2018-10-30', 'white', 'E5HT7836959', 'CH7TYG25E89725419XY', '/upload/car/KL 06 H 3595/2.jpg', '/upload/car/KL 06 H 3595/6 (3).jpg', 'aproved');
+(7, 'KL 06 H 3595', 24, 'maruti suzuki', 'alto800', 'lx', 'petrol', '11/01/2018', 'white', 'E5HT7836959', 'CH7TYG25E89725419XY', '/upload/car/KL 06 H 3595/008.jpg', '/upload/car/KL 06 H 3595/lambhorghini.jpg', 'aproved'),
+(8, 'KL 06 J 8745', 24, 'maruti suzuki', 'swift', 'ldi', 'diesel', '11/09/2018', 'white', 'E5HT7836952', 'CH7TYG25E89725419PP', '/upload/car/KL 06 J 8745/258471-hd-windows-8.jpg', '/upload/car/KL 06 J 8745/008.jpg', 'aproval Pending');
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,10 @@ INSERT INTO `district` (`id`, `district`) VALUES
 (3, 'Ernakulam'),
 (4, 'Thrishur'),
 (5, 'Thiruvananthapuram'),
-(6, 'Kollam');
+(6, 'Kollam'),
+(7, 'Pathanamthitta'),
+(10, 'Kottayam'),
+(11, 'Palakkad');
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,9 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`logid`, `username`, `password`, `usertype`, `status`) VALUES
 (160, 'rdcmainproject@gmail.com', 'YWRtaW5AMTIz', 'admin', 1),
 (161, 'timinkurian@gmail.com', 'dGltaW5AMTIz', 'user', 1),
-(162, 'timinkurian@mca.ajce.in', 'Y2VudGVyQDEyMw==', 'servicecenter', 1);
+(162, 'timinkurian@mca.ajce.in', 'Y2VudGVyQDEyMw==', 'servicecenter', 1),
+(163, 'joyal@gmail.com', 'am95YWxAMTIz', 'servicecenter', 1),
+(164, 'albin@gmail.com', 'YWxiaW5AMTIz', 'user', 1);
 
 -- --------------------------------------------------------
 
@@ -198,7 +204,7 @@ INSERT INTO `login` (`logid`, `username`, `password`, `usertype`, `status`) VALU
 
 CREATE TABLE `scount` (
   `countid` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(12) NOT NULL,
   `scid` int(11) NOT NULL,
   `typeid` int(11) NOT NULL,
   `count` int(11) NOT NULL
@@ -209,7 +215,8 @@ CREATE TABLE `scount` (
 --
 
 INSERT INTO `scount` (`countid`, `date`, `scid`, `typeid`, `count`) VALUES
-(2, '2018-11-21', 6, 6, 3);
+(11, '11/23/2018', 6, 6, 5),
+(12, '11/23/2018', 6, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -235,7 +242,8 @@ CREATE TABLE `servicecenter` (
 --
 
 INSERT INTO `servicecenter` (`scid`, `logid`, `centername`, `licenceno`, `type`, `brand`, `district`, `place`, `certificate`, `mobile`) VALUES
-(6, 162, 'MGF', 'lic8956', 'Authorized', 'maruti suzuki', 'Idukki', 'Kattappana', '/upload/162/p.jpg', 9656874712);
+(6, 162, 'MGF', 'lic8956', 'Authorized', 'maruti suzuki', 'Idukki', 'Kattappana', '/upload/162/p.jpg', 9656874712),
+(7, 163, 'Popular', 'lic9999', 'Authorized', 'hyundai', 'Ernakulam', 'Aluva', '/upload/163/f (8).jpg', 8129874587);
 
 -- --------------------------------------------------------
 
@@ -254,7 +262,7 @@ CREATE TABLE `servicescheme` (
   `stype` varchar(100) NOT NULL,
   `replaced` varchar(500) NOT NULL,
   `checked` varchar(500) NOT NULL,
-  `amount` float NOT NULL
+  `amount` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -262,8 +270,10 @@ CREATE TABLE `servicescheme` (
 --
 
 INSERT INTO `servicescheme` (`scid`, `sid`, `typeid`, `brand`, `model`, `variant`, `fuel`, `stype`, `replaced`, `checked`, `amount`) VALUES
-(6, 8, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'First service', 'Engine oil', 'All Parts', 1000),
-(6, 10, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'Second Service', 'Air and oil filters', 'All Parts', 1100);
+(6, 8, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'First service', 'Engine oil', 'All Parts', '1000'),
+(6, 10, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'Second Service', 'Air and oil filters', 'All Parts', '1100'),
+(6, 11, 6, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'Third Servie', 'Air and oil filters and all plugs', 'All Parts', '1800'),
+(6, 12, 7, 'maruti suzuki', 'alto800', 'lx', 'petrol', 'Body works', 'Based on condition', 'Body parts of vehicle', 'Depends on the work');
 
 -- --------------------------------------------------------
 
@@ -284,7 +294,7 @@ CREATE TABLE `stypes` (
 
 INSERT INTO `stypes` (`typeid`, `scid`, `sname`, `maximum`) VALUES
 (6, 6, 'Periodic Services', 5),
-(7, 6, 'Painting', 3);
+(7, 6, 'Patch works', 3);
 
 -- --------------------------------------------------------
 
@@ -309,7 +319,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`usrid`, `logid`, `fname`, `lname`, `email`, `mobile`, `district`, `place`, `photo`) VALUES
-(24, 161, 'Timin', 'Kurian', 'timinkurian@gmail.com', 9847390002, 'Idukki', 'Kattappana', '/upload/161/IMG_4367.JPG');
+(24, 161, 'Timin', 'Kurian', 'timinkurian@gmail.com', 9847390002, 'Idukki', 'Kattappana', '/upload/161/IMG_4367.JPG'),
+(25, 164, 'Albin', 'Thomas', 'albin@gmail.com', 8129874784, 'Ernakulam', 'Aluva', '/upload/164/s (8).jpg');
 
 --
 -- Indexes for dumped tables
@@ -406,7 +417,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `brand`
@@ -418,7 +429,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `designation`
@@ -430,7 +441,7 @@ ALTER TABLE `designation`
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `fuel`
@@ -442,25 +453,25 @@ ALTER TABLE `fuel`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `logid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `logid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `scount`
 --
 ALTER TABLE `scount`
-  MODIFY `countid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `countid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `servicecenter`
 --
 ALTER TABLE `servicecenter`
-  MODIFY `scid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `scid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `servicescheme`
 --
 ALTER TABLE `servicescheme`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `stypes`
@@ -472,7 +483,7 @@ ALTER TABLE `stypes`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `usrid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `usrid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables

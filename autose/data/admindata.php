@@ -97,13 +97,7 @@ function districtAdd($conn){//adding district
     function searchCar($conn){
         $brand=$_POST['brand'];
         $model=$_POST['model'];
-        if($model=" "){
-           $sql="SELECT * FROM `brand` WHERE `brandname`='$brand'";
-        }
-        else{
             $sql="SELECT * FROM `brand` WHERE `brandname`='$brand' AND `model`='$model'";
-        }
-       
         //die();
         $val=mysqli_query($conn,$sql);
         if ($val) {

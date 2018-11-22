@@ -130,6 +130,14 @@ $("body").on("click", ".admn-click", function (e) {
     // e.preventDefault();
     $brand = $("body #brand").val();
     $model = $("body #model").val();
+    if($brand==""){
+        alert('Choose a brand');
+        die();
+    }
+    if($model==""){
+        alert('Choose a model');
+        die();
+    }
     $type = $(this).data('type');
     //$id=$(this).data('id');
     //alert($type);
@@ -242,6 +250,14 @@ $("body").on("click", ".user-click", function (e) {
     // e.preventDefault();
     $dist = $("body #district").val();
     $brand = $("body #brand").val();
+    if($dist==""){
+        alert('select a district');
+        die();
+    }
+    if($brand==""){
+        alert('select a brand');
+        die();
+    }
     $type = $(this).data('type');
     //$id=$(this).data('id');
     //alert($type);
