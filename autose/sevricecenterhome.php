@@ -35,10 +35,8 @@ if(!getSession('logid'))
 </nav>
 
   <!-- Full Page Intro -->
-  <div  id="pageData"  class="view full-page-intro">
-  <h4 align="center">
-                Welcome! 
-              </h4>
+  <div  id="pageData"  class="view full-page-intro ">
+
     <!-- Mask & flexbox options-->
     <div class="mask d-flex justify-content-center align-items-center">
 
@@ -50,7 +48,9 @@ if(!getSession('logid'))
 
           <!--Grid column-->
           <div  class="col-md-8">
-
+          <h4>
+                Welcome! 
+              </h4>
           </div>
           <!--Grid column-->
 

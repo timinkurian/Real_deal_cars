@@ -16,8 +16,8 @@ if(!getSession('logid'))
     <li><a class='home' href='adminhome.php'>Home</a></li>
     <li><a class='prett' href='#' title='Service center'>Service center</a>
       <ul class='menus'>
-      <li><a href='adminservicecenter.php' title='Approval' class="adm-nav" data-type="approval" >approval</a></li>
-        <li><a href='adminviewcenter.php' title='View all' class="adm-nav" data-type="view">View All</a></li>
+      <li><a href='' title='Approval' class="adm-nav" data-type="approval" >approval</a></li>
+        <li><a href='' title='View all' class="adm-nav" data-type="view">View All</a></li>
       </ul>
     </li>
     <li><a class='prett' href='#' title='Brand'>Brand</a>

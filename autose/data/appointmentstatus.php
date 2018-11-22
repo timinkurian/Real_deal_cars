@@ -2,7 +2,7 @@
 require "connect.php";
 require "session.php";
 $logid=getSession('logid');
-$sql = "SELECT * FROM `appointment` WHERE `usrid` = (SELECT `usrid` FROM `user` WHERE `logid`='$logid')";
+$sql = "SELECT * FROM `appointment` WHERE `usrid` = (SELECT `usrid` FROM `user` WHERE `logid`='$logid') AND `status`='booked'";
 $val=mysqli_query($conn,$sql);
 if ($val) {
     ?>

@@ -47,8 +47,13 @@ switch($type){
         $engineno=$_POST['engineno'];
         $chasisno=$_POST['chasisno'];
         $val=getSession('logid');
-
-
+        $f=$_FILES['rcbook']['name'];
+        $g=$_FILES['car']['name'];
+        if($f==$g)
+        {
+            echo "<script>alert('The file name must be different');window.location='../addcar.php';</script>";
+        }
+        else{
         $sql="SELECT `usrid` FROM `user` WHERE `logid`='$val'";
         $usid=mysqli_query($conn,$sql);
         $data1 = mysqli_fetch_assoc($usid);
@@ -81,6 +86,7 @@ switch($type){
         else{
             echo "<script>alert('Already Exist');window.location='../user.php';</script>";
         }
+    }
     }
 function searchCenter($conn){
     $district=$_POST['dist'];
@@ -232,15 +238,21 @@ function appointmentCancel($conn){
     $typeid =$data1['stype'];
     $scid=$data1['scid'];
     $date=$data1['date'];
+    $status=$data1['status'];
     $sql5="SELECT `count` FROM `scount` WHERE `typeid`='$typeid' AND `date`='$date' AND `scid`='$scid'";
     $count=mysqli_query($conn,$sql5);
     $data1 = mysqli_fetch_assoc($count);
     $acount =$data1['count'];
     $acount=$acount-1;
+    if($status=='booked')
+    {
     $sql7="UPDATE `scount` SET `count`='$acount' WHERE `date`='$date' AND `scid`='$scid' AND `typeid`='$typeid'";    
     mysqli_query($conn,$sql7);
     $sql="UPDATE `appointment` SET `status`='cancelled' WHERE `apid`='$apid' ";
     mysqli_query($conn,$sql);
     echo '1';
-   
+    }
+    else{
+        echo "<script>alert('Work already started');window.location='../s.php';</script>";
+    }
 }

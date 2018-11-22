@@ -9,7 +9,7 @@ $data1 = mysqli_fetch_assoc($sci);
 $sc = $data1['scid'];
 $sql = "SELECT `brand` FROM `servicecenter` WHERE `scid`='$sc'";
 $result = $conn->query($sql);
-//echo '<option value=" ">Choose the brand</option>';
+echo '<option value=" ">Choose the brand</option>';
 if ($result->num_rows > 0) {
     // output data of each row
 

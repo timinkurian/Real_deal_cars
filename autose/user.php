@@ -53,8 +53,8 @@ if(!getSession('logid'))
 
           <!--Grid column-->
           <div  class="col-md-12">
-              <h4>
-                  Welcome! User
+          <h4>
+                Welcome! User 
               </h4>
           </div>
           <!--Grid column-->

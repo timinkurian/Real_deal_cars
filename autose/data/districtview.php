@@ -27,6 +27,7 @@ require "session.php";
         </style>    
     <body>
     <div class="mt-20 py-3">
+    <center>
     <table>
         <thead>
             <tr>

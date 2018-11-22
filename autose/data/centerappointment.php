@@ -34,7 +34,7 @@ if ($val) {
     <table>
         <thead>
             <tr>
-                <th>Appointment Id</th>
+                
                 <th>Customer Name</th>
                 <th>Vehicle Number</th>
                 <th>Date</th>
@@ -49,9 +49,7 @@ if ($val) {
             while($result=mysqli_fetch_array($val)){
             ?>
             <tr>
-                <td>
-                    <?php echo $result['apid']; ?>
-                </td>
+
                 <td>
                     <?php 
                         $r=$result['usrid'];

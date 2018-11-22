@@ -30,7 +30,7 @@ if ($val) {
         <table>
             <thead>
                 <tr>
-                <th>Center Id</th>
+                
                 <th>Center Name</th>
                 <th>Licence Number</th>
                 <th>Type</th>
@@ -47,9 +47,7 @@ if ($val) {
             ?>
         <tbody>
             <tr>
-            <td>
-                    <?php echo $result['scid']; ?>
-                </td>
+
                 <td>
                     <?php echo $result['centername']; ?>
                 </td>

@@ -103,7 +103,7 @@ if(!getSession('logid'))
                     <label for="form3"></label>
                   </div>
                   <div class="md-form">                  
-                    <input type="text" id="place" class="form-control validate" name="place" required>
+                    <input type="text" id="place" class="form-control validate" name="place" data-type="name" required>
                     <label for="form3">place</label>
                   </div>
 
